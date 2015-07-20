@@ -1,6 +1,6 @@
 # Octohat
 
-It's easy to see your [code contribtions](https://help.github.com/articles/why-are-my-contributions-not-showing-up-on-my-profile/), but what about everything else?
+It's easy to see your [code contributions](https://help.github.com/articles/why-are-my-contributions-not-showing-up-on-my-profile/), but what about everything else?
 
 **Octohat** takes a github repo name, and returns a list of every github user that has interacted with a project, but has not committed code. 
 
@@ -23,7 +23,8 @@ Define an environment variable for `GITHUB_TOKEN` to use an [authentication toke
  * [octohub](https://github.com/turnkeylinux/octohub)
 
 ## To do
-
+ 
+ * parallel processing
  * wiki contributions
  * include merge-only contributors as non-code contributors(?)
 
