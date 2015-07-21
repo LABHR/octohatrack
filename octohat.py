@@ -97,10 +97,12 @@ def main():
             if contributor not in contributors:
                 contributors.append(contributor)
     progress_complete()
+    print "Code contributions: %d\n" % len(contributors)
 
     progress("Collecting commentors")
     pri_count = get_pri_count()
     for index in range(1, pri_count):
+        print "Checking %d of %d" % (index, pri_count)
         get_users("/repos/%s/pulls/%d/comments" % (repo_name, index))
         get_users("/repos/%s/issues/%d/comments" % (repo_name, index))
     progress_complete()
@@ -110,6 +112,8 @@ def main():
             if commentor not in non_code:
                 non_code.append(commentor)
                 noncode_userdata[commentor] = userdata[commentor]
+
+    print "Code contributions: %d\n" % len(contributors)
 
     non_code.sort()
     print "\n"

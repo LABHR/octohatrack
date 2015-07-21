@@ -1,0 +1,11 @@
+DESCRIPTION.rst
+MANIFEST.in
+README.rst
+setup.cfg
+setup.py
+octohat.egg-info/PKG-INFO
+octohat.egg-info/SOURCES.txt
+octohat.egg-info/dependency_links.txt
+octohat.egg-info/entry_points.txt
+octohat.egg-info/requires.txt
+octohat.egg-info/top_level.txt

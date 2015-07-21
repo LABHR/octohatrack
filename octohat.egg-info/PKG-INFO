@@ -1,0 +1,22 @@
+Metadata-Version: 1.1
+Name: octohat
+Version: 0.0.1
+Summary: Non-code contribution groker for GitHub
+Home-page: https://github.com/glasnt/octohat
+Author: Katie McLaughlin
+Author-email: katie@glasnt.com
+License: MIT
+Description: Octohat
+        =======================
+        
+        Octohat takes a github repo name, and returns a list of every github
+        user that has interacted with a project, but has not committed code. 
+        
+        For more informaton, usage, etc; please see README.md
+        
+Keywords: octohat github contributions non-code
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 2.7
