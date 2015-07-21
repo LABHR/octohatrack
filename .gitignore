@@ -1,0 +1,2 @@
+# ignore locally generated html files
+*.html
