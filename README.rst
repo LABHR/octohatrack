@@ -7,9 +7,9 @@ It's easy to see your `code contributions`_, but what about everything else?
 
 Interactions include: 
 
- * raising or commenting on an issue
- * raising or commenting on a pull request
- * commenting on a commit
+* raising or commenting on an issue
+* raising or commenting on a pull request
+* commenting on a commit
 
 "Let's All Build a Hat Rack" (#LABHR_) is an original concept by `Leslie Hawthorn`_
 
@@ -24,16 +24,16 @@ Define an environment variable for `GITHUB_TOKEN` to use an `authentication toke
 Dependencies
 ------------
 
- * octohub_
- * requests
- * simplejson
+* octohub_ by turnkeylinux
+* requests
+* simplejson
 
 To do
 -----
  
- * parallel processing
- * wiki contributions
- * include merge-only contributors as non-code contributors(?)
+* parallel processing
+* wiki contributions
+* include merge-only contributors as non-code contributors(?)
 
 License
 -------
