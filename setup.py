@@ -1,6 +1,7 @@
 from setuptools import setup, find_packages
 from codecs import open
 from os import path
+import octohat
 
 here = path.abspath(path.dirname(__file__))
 
@@ -27,5 +28,6 @@ setup(
     install_requires=['octohub','requests','simplejson'],
     entry_points={
       'console_scripts': [ "octohat = octohat:main" ]
-    }
+    },
+    packages=find_packages()
 )

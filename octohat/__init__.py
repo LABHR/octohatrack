@@ -136,6 +136,3 @@ def main():
     print "Generated HTML representation, saved to %s" % html_file
     if has_wiki:
         print "Note: does not include wiki contributions."  # TODO
-
-if __name__ == "__main__":
-    main()
