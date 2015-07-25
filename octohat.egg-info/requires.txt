@@ -1,3 +1,0 @@
-octohub
-requests
-simplejson
