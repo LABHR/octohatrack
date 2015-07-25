@@ -22,26 +22,22 @@ def main():
   code_contributors = get_code_contributors(repo_name)
   code_commentors = get_code_commentors(repo_name, args.limit)
 
-  print code_contributors
-  print code_commentors
-
   non_code_contributors = []
   for user in code_commentors:
     user_name, avatar = user 
     if user_name not in code_contributors:
       non_code_contributors.append({'user_name': user_name, 'avatar': avatar})
 
-  print non_code_contributors  
-
   print "Code contributions: %d" % len(code_contributors)
   print "Non-code contributions: %d" % len(non_code_contributors)
-
 
   if args.generate_html:
     html_file = "%s_contrib.html" % repo_name.replace("/", "_")
     f = open(html_file, "w")
 
-    f.write("<h1>Non-code contributions for %s</h1>" % repo_name)
+    title = "Non-code contributions for %s" % repo_name
+    f.write("<title>%s</title>\n" %  title)
+    f.write("<h1>%s</h1>\n" % title)
     if args.limit > 0:
       f.write("(for the most recent %d issues/pull requests)" % args.limit)
     for user in non_code_contributors: 
