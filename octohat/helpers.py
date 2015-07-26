@@ -1,6 +1,7 @@
 import os
 import sys
 from connection import Connection, Pager
+from exceptions import ResponseError
 
 token = os.environ.get("GITHUB_TOKEN")
 conn = Connection(token)
@@ -44,8 +45,11 @@ def get_code_commentors(repo_name, limit):
 
 
 def get_data(uri):
-    resp = conn.send("GET", uri)
-    return resp.json()
+    try: 
+      resp = conn.send("GET", uri)
+      return resp.json()
+    except ResponseError, e: 
+      return None
 
 
 def get_pri_count(repo_name):
@@ -63,7 +67,10 @@ def get_user_data(entry):
 def get_user(uri):
     progress_advance()
     entry = get_data(uri)
-    return [get_user_data(entry)]
+    if entry is not None:
+        return [get_user_data(entry)]
+    else:
+        return []
 
 def get_users(uri):
     users = []
