@@ -1,7 +1,6 @@
 from setuptools import setup, find_packages
 from codecs import open
 from os import path
-import octohat
 
 here = path.abspath(path.dirname(__file__))
 
@@ -10,7 +9,7 @@ with open(path.join(here, 'DESCRIPTION.rst'), encoding='utf-8') as f:
 
 setup(
     name='octohat',
-    version='0.0.1',
+    version='0.1.32',
     description='Non-code contribution groker for GitHub',
     long_description=long_description,
     url='https://github.com/glasnt/octohat',
@@ -25,7 +24,7 @@ setup(
         #'Programming Language :: Python :: 3',
     ],
     keywords='octohat github contributions non-code',
-    install_requires=['octohub','requests','simplejson'],
+    install_requires=['requests'],
     entry_points={
       'console_scripts': [ "octohat = octohat:main" ]
     },

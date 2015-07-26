@@ -1,1 +1,2 @@
 include DESCRIPTION.rst
+recursive-include octohat *
