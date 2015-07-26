@@ -33,8 +33,8 @@ Define an environment variable for `GITHUB_TOKEN` to use an `authentication toke
 Dependencies
 ------------
 
-Manual: 
-
+* requests
+ * also requires: `pip install pyopenssl ndg-httpsclient pyasn1` (source_)
 * simplejson
  * does not appear to nicely install from pip; work around: `apt-get install python-dev python-simplejson`, depending on your environment
 * octohub_ 
@@ -61,3 +61,4 @@ Octohub is Copyright (c) 2013 Alon Swartz (turnkeylinux), used under the GPLv3 l
 .. _code contributions: https://help.github.com/articles/why-are-my-contributions-not-showing-up-on-my-profile/
 .. _authentication token: https://help.github.com/articles/creating-an-access-token-for-command-line-use/
 .. _octohub: https://github.com/turnkeylinux/octohub
+.. _source: http://stackoverflow.com/a/29202163/124019
