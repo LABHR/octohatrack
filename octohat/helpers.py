@@ -27,14 +27,15 @@ def get_code_contributors(repo_name):
 def get_code_commentors(repo_name, limit):
   progress("Collecting commentors")
   pri_count = get_pri_count(repo_name)
-
   if limit == 0:
      minimum = 1
   else: 
     minimum = max(1, pri_count - limit)
 
   users = []
-  for index in range(minimum, pri_count):
+  for index in range(minimum, pri_count + 1):
+      users.append(get_user("/repos/%s/pulls/%d" % (repo_name, index)))
+      users.append(get_user("/repos/%s/issues/%d" % (repo_name, index)))
       users.append(get_users("/repos/%s/pulls/%d/comments" % (repo_name, index)))
       users.append(get_users("/repos/%s/issues/%d/comments" % (repo_name, index)))
   progress_complete()
@@ -56,6 +57,13 @@ def get_pri_count(repo_name):
 
     return max(pr_count, issue_count)
 
+def get_user_data(entry):
+    return (entry["user"]["login"], "%s&s=128" % entry["user"]["avatar_url"])
+
+def get_user(uri):
+    progress_advance()
+    entry = get_data(uri)
+    return [get_user_data(entry)]
 
 def get_users(uri):
     users = []
@@ -64,7 +72,7 @@ def get_users(uri):
         for response in pager:
             progress_advance()
             for entry in response.json():
-                users.append((entry["user"]["login"], "%s&s=128" % entry["user"]["avatar_url"]))
+                users.append(get_user_data(entry))
     except ResponseError, e:
         pass
 
