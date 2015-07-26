@@ -9,8 +9,7 @@
 
 import requests
 
-from octohub import __useragent__
-from octohub.response import parse_response
+from response import parse_response
 
 class Pager(object):
     def __init__(self, conn, uri, params, max_pages=0):
@@ -47,7 +46,7 @@ class Connection(object):
             token (str): GitHub Token (anonymous if not provided)
         """
         self.endpoint = 'https://api.github.com'
-        self.headers = {'User-Agent': __useragent__}
+        self.headers = {'User-Agent': 'octohub'}
 
         if token:
             self.headers['Authorization'] = 'token %s' % token

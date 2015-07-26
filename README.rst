@@ -33,9 +33,12 @@ Define an environment variable for `GITHUB_TOKEN` to use an `authentication toke
 Dependencies
 ------------
 
-* requests
+Manual: 
+
 * simplejson
-* octohub_ (Dependency distributed in-line under GPLv3 license.)
+ * does not appear to nicely install from pip; work around: `apt-get install python-dev python-simplejson`, depending on your environment
+* octohub_ 
+ * Dependency distributed in-line under GPLv3 license.
 
 To do
 -----
@@ -43,10 +46,10 @@ To do
 * parallel processing
 * wiki contributions
 * include merge-only contributors as non-code contributors(?)
+* work out why simplejson isn't being very simple to install
 
 License
 -------
-
 
 Octohat is distributed under the `MIT license`_.
 

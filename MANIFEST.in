@@ -1,3 +1,2 @@
 include DESCRIPTION.rst
 recursive-include octohat *
-recursive-include octohub *

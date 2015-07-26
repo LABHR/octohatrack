@@ -1,91 +1,40 @@
+# Copyright (c) 2013 Alon Swartz <alon@turnkeylinux.org>
+#
+# This file is part of OctoHub.
+#
+# OctoHub is free software; you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation; either version 3 of the License, or (at your option) any later
+# version.
+
 import os
-import sys
+import logging
 
-from octohub.connection import Connection, Pager
-from octohub.exceptions import ResponseError
+class AttrDict(dict):
+    """Attribute Dictionary (set and access attributes 'pythonically')"""
+    def __getattr__(self, name):
+        if name in self:
+            return self[name]
+        raise AttributeError('no such attribute: %s' % name)
 
-token = os.environ.get("GITHUB_TOKEN")
-conn = Connection(token)
-  
-def unique(array): 
-  seen = set()
-  seen_add = seen.add
-  return [ x for x in array if not (x in seen or seen_add(x))]
+    def __setattr__(self, name, val):
+        self[name] = val
 
-def flatten(array):
-  return [item for sublist in array for item in sublist]
+def get_logger(name, level=None):
+    """Returns logging handler based on name and level (stderr)
+        name (str): name of logging handler
+        level (str): see logging.LEVEL
+    """
+    logger = logging.getLogger(name)
 
-def get_code_contributors(repo_name): 
-  progress("Collecting contributors")
-  users = []
-  pager = Pager(conn, "/repos/%s/contributors" % repo_name, params={}, max_pages=0)
-  for response in pager:
-      progress_advance()
-      for entry in response.json():
-          users.append(entry["login"])
-  progress_complete()
-  return unique(users)
+    if not logger.handlers:
+        stderr = logging.StreamHandler()
+        stderr.setFormatter(logging.Formatter(
+            '%(levelname)s [%(name)s]: %(message)s'))
+        logger.addHandler(stderr)
 
-def get_code_commentors(repo_name, limit):
-  progress("Collecting commentors")
-  pri_count = get_pri_count(repo_name)
+        level = level if level else os.environ.get('OCTOHUB_LOGLEVEL', 'CRITICAL')
+        logger.setLevel(getattr(logging, level))
 
-  if limit == 0:
-     minimum = 1
-  else: 
-    minimum = max(1, pri_count - limit)
+    return logger
 
-  users = []
-  for index in range(minimum, pri_count):
-      users.append(get_users("/repos/%s/pulls/%d/comments" % (repo_name, index)))
-      users.append(get_users("/repos/%s/issues/%d/comments" % (repo_name, index)))
-  progress_complete()
-
-  return unique(flatten(users))
-
-
-def get_data(uri):
-    resp = conn.send("GET", uri)
-    return resp.json()
-
-
-def get_pri_count(repo_name):
-    prs = get_data("/repos/%s/pulls?state=all" % repo_name)
-    pr_count = prs[0]["number"]
-
-    issues = get_data("/repos/%s/issues?state=all" % repo_name)
-    issue_count = issues[0]["number"]
-
-    return max(pr_count, issue_count)
-
-
-def get_users(uri):
-    users = []
-    try:
-        pager = Pager(conn, uri, params={}, max_pages=0)
-        for response in pager:
-            progress_advance()
-            for entry in response.json():
-                users.append((entry["user"]["login"], "%s&s=128" % entry["user"]["avatar_url"]))
-    except ResponseError, e:
-        pass
-
-    return users
-
-def repo_exists(repo_name):
-    try:
-        repo = conn.send("GET", "/repos/%s" % repo_name)
-        return True 
-    except ResponseError, e:
-        return False
-
-def progress(message):
-    sys.stdout.write("%s..." % message)
-    sys.stdout.flush()
-
-def progress_advance():
-    sys.stdout.write(".")
-    sys.stdout.flush()
-
-def progress_complete():
-    sys.stdout.write("\n")
