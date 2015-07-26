@@ -10,7 +10,6 @@
 import re
 
 from utils import AttrDict, get_logger
-from exceptions import ResponseError, OctoHubError
 
 log = get_logger('response')
 

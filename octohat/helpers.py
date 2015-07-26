@@ -1,8 +1,6 @@
 import os
 import sys
-
 from connection import Connection, Pager
-from exceptions import ResponseError
 
 token = os.environ.get("GITHUB_TOKEN")
 conn = Connection(token)
