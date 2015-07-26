@@ -1,7 +1,7 @@
 Octohat
 =======
 
-It's easy to see your `code contributions`_, but what about everything else?
+It's easy to see your direct `code contributions`_ on GitHub, but what about everything else?
 
 **Octohat** takes a github repo name, and returns a list of every github user that has interacted with a project, but has not committed code. 
 
@@ -11,12 +11,21 @@ Interactions include:
 * raising or commenting on a pull request
 * commenting on a commit
 
-"Let's All Build a Hat Rack" (#LABHR_) is an original concept by `Leslie Hawthorn`_
+"Let's All Build a Hat Rack" (`#LABHR`_) is an original concept by `Leslie Hawthorn`_
 
 Usage
 -----
+.. code-block:: 
 
-`./octohat.py githubuser/repo`
+    octohat [-h] [-g] [-l LIMIT] repo_name
+
+    positional arguments:
+      repo_name                githubuser/repo
+
+    optional arguments:
+      -g, --generate-html      Generate output as HTML
+      -l LIMIT, --limit LIMIT  Limit to the last x Issues/Pull Requests
+
 
 Define an environment variable for `GITHUB_TOKEN` to use an `authentication token`_ (allows for deeper searching)
 
@@ -24,9 +33,9 @@ Define an environment variable for `GITHUB_TOKEN` to use an `authentication toke
 Dependencies
 ------------
 
-* octohub_ by turnkeylinux
 * requests
 * simplejson
+* octohub_ (Dependency distributed in-line under GPLv3 license.)
 
 To do
 -----
@@ -39,9 +48,11 @@ License
 -------
 
 
-This code is `MIT licensed`_.
+Octohat is distributed under the `MIT license`_.
 
-.. _MIT licensed: https://github.com/bulletproofnetworks/coco/blob/master/LICENSE
+Octohub is Copyright (c) 2013 Alon Swartz (turnkeylinux), used under the GPLv3 license. 
+
+.. _MIT license: https://github.com/glasnt/octohat/blob/master/LICENSE
 .. _#LABHR: https://twitter.com/search?q=%23LABHR&src=typd
 .. _Leslie Hawthorn: http://hawthornlandings.org/2015/02/13/a-place-to-hang-your-hat/
 .. _code contributions: https://help.github.com/articles/why-are-my-contributions-not-showing-up-on-my-profile/

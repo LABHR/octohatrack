@@ -25,7 +25,7 @@ setup(
         #'Programming Language :: Python :: 3',
     ],
     keywords='octohat github contributions non-code',
-    install_requires=['octohub','requests','simplejson'],
+    install_requires=['requests','simplejson'],
     entry_points={
       'console_scripts': [ "octohat = octohat:main" ]
     },
