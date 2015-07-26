@@ -27,18 +27,15 @@ Usage
       -l LIMIT, --limit LIMIT  Limit to the last x Issues/Pull Requests
 
 
-Define an environment variable for `GITHUB_TOKEN` to use an `authentication token`_ (allows for deeper searching)
+Define an environment variable for "GITHUB_TOKEN" to use an `authentication token`_ (allows for deeper searching)
 
 
 Dependencies
 ------------
 
-* requests
- * also requires: `pip install pyopenssl ndg-httpsclient pyasn1` (source_)
-* simplejson
- * does not appear to nicely install from pip; work around: `apt-get install python-dev python-simplejson`, depending on your environment
-* octohub_ 
- * Dependency distributed in-line under GPLv3 license.
+* requests (may require "pip install pyopenssl ndg-httpsclient pyasn1" (source_))
+* simplejson (may require "apt-get install python-dev python-simplejson", as does not install from pip nicely)
+* octohub_ (distributed inline under GPLv3 license)
 
 To do
 -----
