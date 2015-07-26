@@ -9,7 +9,7 @@ with open(path.join(here, 'DESCRIPTION.rst'), encoding='utf-8') as f:
 
 setup(
     name='octohat',
-    version='0.0.1',
+    version='0.0.2',
     description='Non-code contribution groker for GitHub',
     long_description=long_description,
     url='https://github.com/glasnt/octohat',
