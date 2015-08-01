@@ -9,7 +9,7 @@
 
 import requests
 
-from response import parse_response
+from .response import parse_response
 
 class Pager(object):
     def __init__(self, conn, uri, params, max_pages=0):
@@ -34,7 +34,7 @@ class Pager(object):
             if self.count == self.max_pages:
                 break
 
-            if not 'next' in response.parsed_link.keys():
+            if not 'next' in list(response.parsed_link.keys()):
                 break
 
             self.uri = response.parsed_link.next.uri

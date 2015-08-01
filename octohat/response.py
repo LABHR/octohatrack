@@ -9,8 +9,9 @@
 
 import re
 
-from utils import AttrDict, get_logger
-from exceptions import ResponseError#, OctohubError
+from .utils import AttrDict, get_logger
+from .exceptions import ResponseError#, OctohubError
+import collections
 
 log = get_logger('response')
 
@@ -49,7 +50,7 @@ def parse_element(el):
     """Parse el recursively, replacing dicts with AttrDicts representation"""
     if type(el) == dict:
         el_dict = AttrDict()
-        for key, val in el.items():
+        for key, val in list(el.items()):
             el_dict[key] = parse_element(val)
 
         return el_dict
@@ -76,19 +77,19 @@ def parse_response(response):
     response.parsed = AttrDict()
     response.parsed_link = AttrDict()
 
-    if 'link' in response.headers.keys():
+    if 'link' in list(response.headers.keys()):
         response.parsed_link = _parse_link(response.headers['link'])
 
     headers = ['status', 'x-ratelimit-limit', 'x-ratelimit-remaining']
     for header in headers:
-        if header in response.headers.keys():
+        if header in list(response.headers.keys()):
             log.info('%s: %s' % (header, response.headers[header]))
 
     content_type = _get_content_type(response)
 
     if content_type == 'application/json':
         json = response.json
-        if callable(json):
+        if isinstance(json, collections.Callable):
             json = json()
         response.parsed = parse_element(json)
     else:
