@@ -1,7 +1,7 @@
 import os
 import sys
-from connection import Connection, Pager
-from exceptions import ResponseError
+from .connection import Connection, Pager
+from .exceptions import ResponseError
 
 token = os.environ.get("GITHUB_TOKEN")
 conn = Connection(token)
@@ -48,7 +48,7 @@ def get_data(uri):
     try: 
       resp = conn.send("GET", uri)
       return resp.json()
-    except ResponseError, e: 
+    except ResponseError as e: 
       return None
 
 
@@ -80,7 +80,7 @@ def get_users(uri):
             progress_advance()
             for entry in response.json():
                 users.append(get_user_data(entry))
-    except ResponseError, e:
+    except ResponseError as e:
         pass
 
     return users
@@ -89,7 +89,7 @@ def repo_exists(repo_name):
     try:
         repo = conn.send("GET", "/repos/%s" % repo_name)
         return True 
-    except ResponseError, e:
+    except ResponseError as e:
         return False
 
 def progress(message):
