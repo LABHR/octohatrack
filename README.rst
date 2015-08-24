@@ -1,9 +1,12 @@
 Octohat
 =======
 
-
 .. image:: https://travis-ci.org/glasnt/octohat.svg?branch=master
     :target: https://travis-ci.org/glasnt/octohat
+    
+.. image:: https://badge.fury.io/py/octohat.svg
+    :target: http://badge.fury.io/py/octohat
+    
     
 It's easy to see your direct `code contributions`_ on GitHub, but what about everything else?
 
