@@ -1,6 +1,10 @@
 Octohat
 =======
 
+
+.. image:: https://travis-ci.org/glasnt/octohat.svg?branch=master
+    :target: https://travis-ci.org/glasnt/octohat
+    
 It's easy to see your direct `code contributions`_ on GitHub, but what about everything else?
 
 **Octohat** takes a github repo name, and returns a list of every github user that has interacted with a project, but has not committed code. 
@@ -12,6 +16,12 @@ Interactions include:
 * commenting on a commit
 
 "Let's All Build a Hat Rack" (`#LABHR`_) is an original concept by `Leslie Hawthorn`_
+
+Installation
+------------
+.. code-block:: 
+
+    pip install octohat
 
 Usage
 -----
@@ -30,27 +40,20 @@ Usage
 Define an environment variable for "GITHUB_TOKEN" to use an `authentication token`_ (allows for deeper searching)
 
 
-Dependencies
-------------
-
-* requests (may require "pip install pyopenssl ndg-httpsclient pyasn1" (source_))
-* simplejson (may require "apt-get install python-dev python-simplejson", as does not install from pip nicely)
-* octohub_ (distributed inline under GPLv3 license)
-
 To do
 -----
  
 * parallel processing
 * wiki contributions
-* include merge-only contributors as non-code contributors(?)
-* work out why simplejson isn't being very simple to install
+* include merge-only contributors as non-code contributors
+
 
 License
 -------
 
 Octohat is distributed under the `MIT license`_.
 
-Octohub is Copyright (c) 2013 Alon Swartz (turnkeylinux), used under the GPLv3 license. 
+Octohub is Copyright (c) 2013 Alon Swartz (turnkeylinux), used inline under the GPLv3 license. 
 
 .. _MIT license: https://github.com/glasnt/octohat/blob/master/LICENSE
 .. _#LABHR: https://twitter.com/search?q=%23LABHR&src=typd
