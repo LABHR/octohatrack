@@ -1,8 +1,10 @@
 Octohat
 =======
 
-[![Build Status](https://travis-ci.org/glasnt/octohat.svg?branch=master)](https://travis-ci.org/glasnt/octohat)
 
+.. image:: https://travis-ci.org/glasnt/octohat.svg?branch=master
+    :target: https://travis-ci.org/glasnt/octohat
+    
 It's easy to see your direct `code contributions`_ on GitHub, but what about everything else?
 
 **Octohat** takes a github repo name, and returns a list of every github user that has interacted with a project, but has not committed code. 
