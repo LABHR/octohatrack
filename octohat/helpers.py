@@ -54,10 +54,17 @@ def get_data(uri):
 
 def get_pri_count(repo_name):
     prs = get_data("/repos/%s/pulls?state=all" % repo_name)
-    pr_count = prs[0]["number"]
-
     issues = get_data("/repos/%s/issues?state=all" % repo_name)
-    issue_count = issues[0]["number"]
+
+    if not prs:
+        pr_count = 0
+    else:
+        pr_count = prs[0]["number"]
+
+    if not issues:
+        issue_count = 0
+    else:
+        issue_count = issues[0]["number"]
 
     return max(pr_count, issue_count)
 
