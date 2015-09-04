@@ -51,6 +51,12 @@ To do
 * include merge-only contributors as non-code contributors
 
 
+Code of Conduct
+---------------
+
+Octohat operates under a `Code of Conduct`_.
+
+
 License
 -------
 
@@ -65,3 +71,4 @@ Octohub is Copyright (c) 2013 Alon Swartz (turnkeylinux), used inline under the 
 .. _authentication token: https://help.github.com/articles/creating-an-access-token-for-command-line-use/
 .. _octohub: https://github.com/turnkeylinux/octohub
 .. _source: http://stackoverflow.com/a/29202163/124019
+.. _Code of Conduct: https://github.com/glasnt/octohat/blob/master/code-of-conduct.md
