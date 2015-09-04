@@ -4,4 +4,6 @@ python:
   - "3.4"
 install:
   - "pip install ."
-script: "octohat glasnt/octohat"
+script: 
+  - "octohat glasnt/octohat"
+  - "octohat glasnt/nudgebucket"
