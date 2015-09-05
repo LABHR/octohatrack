@@ -46,11 +46,11 @@ class Connection(object):
             token (str): GitHub Token (anonymous if not provided)
         """
         self.endpoint = 'https://api.github.com'
-        self.headers = {'User-Agent': 'octohub'}
         self.session = requests.Session()
+        self.session.headers = {'User-Agent': 'octohub'}
 
         if token:
-            self.headers['Authorization'] = 'token %s' % token
+            self.session.headers['Authorization'] = 'token %s' % token
 
     def send(self, method, uri, params={}, data=None):
         """Prepare and send request
@@ -65,7 +65,7 @@ class Connection(object):
                 http://docs.python-requests.org/en/latest/api/#requests.Response
         """
         url = self.endpoint + uri
-        kwargs = {'headers': self.headers, 'params': params, 'data': data}
+        kwargs = {'params': params, 'data': data}
         response = self.session.request(method, url, **kwargs)
 
         return parse_response(response)
