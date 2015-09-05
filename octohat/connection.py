@@ -47,6 +47,7 @@ class Connection(object):
         """
         self.endpoint = 'https://api.github.com'
         self.headers = {'User-Agent': 'octohub'}
+        self.session = requests.Session()
 
         if token:
             self.headers['Authorization'] = 'token %s' % token
@@ -65,7 +66,7 @@ class Connection(object):
         """
         url = self.endpoint + uri
         kwargs = {'headers': self.headers, 'params': params, 'data': data}
-        response = requests.request(method, url, **kwargs)
+        response = self.session.request(method, url, **kwargs)
 
         return parse_response(response)
 
