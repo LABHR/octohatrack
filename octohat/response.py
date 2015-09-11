@@ -7,7 +7,7 @@
 # Foundation; either version 3 of the License, or (at your option) any later
 # version.
 
-import re, sys
+import re, sys, time
 
 from .utils import AttrDict, get_logger
 from .exceptions import ResponseError#, OctohubError
