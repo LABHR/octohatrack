@@ -86,7 +86,7 @@ def parse_response(response):
             log.info('%s: %s' % (header, response.headers[header]))
 
     ratelimit_remaining = int(response.headers.get('x-ratelimit-remaining'))
-    if limit_remaining == 0:
+    if ratelimit_remaining == 0:
         # Print out helpful ratelimiting information
         ratelimit_limit = int(response.headers.get('x-ratelimit-limit'))
         ratelimit_reset = int(response.headers.get('x-ratelimit-reset'))
