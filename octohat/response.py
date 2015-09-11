@@ -7,7 +7,7 @@
 # Foundation; either version 3 of the License, or (at your option) any later
 # version.
 
-import re, sys
+import re, sys, time
 
 from .utils import AttrDict, get_logger
 from .exceptions import ResponseError#, OctohubError
@@ -85,12 +85,20 @@ def parse_response(response):
         if header in list(response.headers.keys()):
             log.info('%s: %s' % (header, response.headers[header]))
 
-    limit_remaining = int(response.headers.get('x-ratelimit-remaining'))
-    if limit_remaining == 0:
-        raise ValueError("you have run out of github requests. try setting a token.")
-    elif limit_remaining < 100:
-        if limit_remaining % 5 == 0:
-            sys.stderr.write("warning: ratelimit-remaining: %s\n" % response.headers.get('x-ratelimit-remaining'))
+    ratelimit_remaining = int(response.headers.get('x-ratelimit-remaining'))
+    if ratelimit_remaining == 0:
+        # Print out helpful ratelimiting information
+        ratelimit_limit = int(response.headers.get('x-ratelimit-limit'))
+        ratelimit_reset = int(response.headers.get('x-ratelimit-reset'))
+
+        message = "You have run out of GitHub request tokens. "
+
+        if ratelimit_limit == 60:
+            message += "Set a GITHUB_TOKEN to increase your limit to 5000/hour. "
+
+        message += "Try again at %s" % time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(ratelimit_reset))
+
+        raise ValueError(message)
     
     content_type = _get_content_type(response)
 
