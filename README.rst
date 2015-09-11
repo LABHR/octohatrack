@@ -20,6 +20,15 @@ Interactions include:
 
 "Let's All Build a Hat Rack" (`#LABHR`_) is an original concept by `Leslie Hawthorn`_
 
+WARNING
+-------
+
+`octohat in Python <https://github.com/glasnt/octohat>`__ and `octohat
+in Ruby <https://github.com/glasnt/octohat-rb>`__ both create callable
+``octohat`` entites. Strange things may occur if you try to install both
+on your system.
+
+
 Installation
 ------------
 .. code-block:: 
