@@ -4,4 +4,4 @@ python:
 install:
   - "pip install ."
 script: 
-  - "octohat glasnt/octohat"
+  - "DEBUG=true octohat glasnt/octohat"
