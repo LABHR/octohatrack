@@ -96,7 +96,9 @@ def parse_response(response):
         if ratelimit_limit == 60:
             message += "Set a GITHUB_TOKEN to increase your limit to 5000/hour. "
 
-        message += "Try again at %s" % time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(ratelimit_reset))
+        wait_minutes = (time.localtime(ratelimit_reset) - int(time.time())) / 60 
+
+        message += "Try again in %d" % wait_minutes
 
         raise ValueError(message)
     
