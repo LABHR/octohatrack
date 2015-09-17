@@ -51,6 +51,14 @@ Usage
 
 Define an environment variable for "GITHUB_TOKEN" to use an `authentication token`_ (allows for deeper searching)
 
+Run this repo locally
+---------------------
+
+.. code-block::
+    git clone https://github.com/glasnt/octohat
+    cd octohat
+    python3 octocat.py [arguments]
+
 
 To do
 -----
