@@ -69,9 +69,8 @@ def get_pri_count(repo_name):
     return max(pr_count, issue_count)
 
 def get_user_data(entry):
-    user_name = get_user_name(entry["user"]["login"])
     return (entry["user"]["login"], "%s&s=128" % entry["user"]["avatar_url"],
-            user_name)
+            get_user_name(entry["user"]["login"]))
 
 def get_user(uri):
     progress_advance()
