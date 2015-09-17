@@ -1,0 +1,2 @@
+import octohat
+octohat.main()
