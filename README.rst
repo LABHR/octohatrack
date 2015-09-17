@@ -57,7 +57,7 @@ Run this repo locally
 .. code-block::
     git clone https://github.com/glasnt/octohat
     cd octohat
-    python3 octocat.py [arguments]
+    python3 octohat.py [arguments]
 
 
 To do
