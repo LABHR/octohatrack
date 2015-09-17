@@ -4,6 +4,15 @@ from .connection import Connection, Pager
 from .exceptions import ResponseError
 
 token = os.environ.get("GITHUB_TOKEN")
+debug = os.environ.get("DEBUG")
+
+if debug: 
+  if (token == None): 
+    print("No GITHUB_TOKEN found")
+  else: 
+    print("GITHUB_TOKEN found of length %d" % len(token))
+
+
 conn = Connection(token)
   
 def unique(array): 
