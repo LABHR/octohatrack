@@ -33,7 +33,7 @@ def main():
   if args.generate_html:
     html_file = "%s_contrib.html" % repo_name.replace("/", "_")
     f = open(html_file, "w")
-
+    title = "Non-code contributions for %s" % repo_name
     f.write("<h1>%s</h1>\n" % title)
     if args.limit > 0:
       f.write("(for the most recent %d issues/pull requests)" % args.limit)
