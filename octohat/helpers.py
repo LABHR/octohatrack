@@ -113,5 +113,5 @@ def progress_complete():
 
 def get_user_name(login):
     user = get_data("/users/%s" % login)
-    if user["name"] is None: user["name"] = "(No name)"
+    if user["name"] is None: user["name"] = login
     return user["name"]
