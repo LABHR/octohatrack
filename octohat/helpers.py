@@ -16,9 +16,7 @@ if debug:
 conn = Connection(token)
   
 def unique(array): 
-  seen = set()
-  seen_add = seen.add
-  return [ x for x in array if not (x in seen or seen_add(x))]
+  return list({v['user_name']:v for v in array}.values())
 
 def flatten(array):
   return [item for sublist in array for item in sublist]
@@ -30,7 +28,7 @@ def get_code_contributors(repo_name):
   for response in pager:
       progress_advance()
       for entry in response.json():
-          users.append(entry["login"])
+          users.append(get_user_data(entry))
   progress_complete()
   return unique(users)
 
@@ -78,7 +76,10 @@ def get_pri_count(repo_name):
     return max(pr_count, issue_count)
 
 def get_user_data(entry):
-    return (entry["user"]["login"], "%s&s=128" % entry["user"]["avatar_url"])
+    if "user" in entry.keys():
+      return {"user_name": entry["user"]["login"], "avatar": "%s&s=128" % entry["user"]["avatar_url"]}
+    else:
+      return {"user_name": entry["login"], "avatar": "%s&s=128" % entry["avatar_url"]}
 
 def get_user(uri):
     progress_advance()

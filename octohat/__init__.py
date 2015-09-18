@@ -10,6 +10,7 @@ def main():
   parser.add_argument("repo_name", help="githubuser/repo")
   parser.add_argument("-g", "--generate-html", action='store_true', help="Generate output as HTML")
   parser.add_argument("-l", "--limit", help="Limit to the last x Issues/Pull Requests", type=int, default=0)
+  parser.add_argument("-c", "--show-contributors", action='store_true', help="Output the code contributors as well")
   args = parser.parse_args()  
 
   repo_name = args.repo_name
@@ -23,11 +24,15 @@ def main():
 
   non_code_contributors = []
   for user in code_commentors:
-    user_name, avatar = user 
-    if user_name not in code_contributors:
-      non_code_contributors.append({'user_name': user_name, 'avatar': avatar})
+    if user not in code_contributors:
+      non_code_contributors.append(user)
 
   print("Code contributions: %d" % len(code_contributors))
+
+  if args.show_contributors:
+    for user in code_contributors: 
+      print(user["user_name"])
+    
   print("Non-code contributions: %d" % len(non_code_contributors))
 
   if args.generate_html:
