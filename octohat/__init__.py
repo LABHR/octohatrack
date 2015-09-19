@@ -34,6 +34,7 @@ def main():
   if args.show_contributors:
     for user in code_contributors: 
       display_user_name(user, args)
+    print()
   
   print("Non-code contributions: %d" % len(non_code_contributors))
 
