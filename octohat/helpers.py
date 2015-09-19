@@ -77,9 +77,10 @@ def get_pri_count(repo_name):
 
 def get_user_data(entry):
     if "user" in entry.keys():
-      return {"user_name": entry["user"]["login"], "avatar": "%s&s=128" % entry["user"]["avatar_url"]}
+      return {"user_name": entry["user"]["login"], "avatar": "%s&s=128" % entry["user"]["avatar_url"],
+              "name": get_user_name(entry["user"]["login"])}
     else:
-      return {"user_name": entry["login"], "avatar": "%s&s=128" % entry["avatar_url"]}
+      return {"user_name": entry["login"], "avatar": "%s&s=128" % entry["avatar_url"], "name": get_user_name(entry["login"])}
 
 def get_user(uri):
     progress_advance()
@@ -119,3 +120,8 @@ def progress_advance():
 
 def progress_complete():
     sys.stdout.write("\n")
+
+def get_user_name(login):
+    user = get_data("/users/%s" % login)
+    if user["name"] is None: user["name"] = login
+    return user["name"]
