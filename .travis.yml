@@ -6,3 +6,4 @@ install:
 script: 
   - "DEBUG=true octohat glasnt/octohat-rb"
   - "python3 octohat.py glasnt/octohat -c -g -n"
+  - "cat glasnt_octohat_contrib.html"
