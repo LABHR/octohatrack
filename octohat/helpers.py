@@ -12,7 +12,6 @@ if debug:
   else: 
     print("GITHUB_TOKEN found of length %d" % len(token))
 
-
 conn = Connection(token)
   
 def unique(array): 
@@ -125,3 +124,15 @@ def get_user_name(login):
     user = get_data("/users/%s" % login)
     if user["name"] is None: user["name"] = login
     return user["name"]
+
+def display_user_name(user, args):
+    if args.show_names and user["name"] != user["user_name"]:
+      print("%s (%s)" % (user["user_name"], user['name']))
+    else: 
+      print(user["user_name"])
+
+def display_user_html(user, args):
+    url = "https://github.com/%s/issues?q=involves:%s" % (args.repo_name, user["user_name"])
+    html = ("<div class='contrib'><a href='%s'><img src='%s' width='128' alt='%s'></a><div align='center'>%s</div></div>\n" % 
+        (url, user["avatar"], user["user_name"], user['name']))
+    return html
