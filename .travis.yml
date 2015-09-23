@@ -1,6 +1,8 @@
 language: python
 python:
   - "3.4"
+env:
+  - GITHUB_TOKEN="1fefaa93eaf6816640dc14e14fcbbc0f00914516"
 install:
   - "pip install ."
 script: 
