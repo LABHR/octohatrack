@@ -133,6 +133,6 @@ def display_user_name(user, args):
 
 def display_user_html(user, args):
     url = "https://github.com/%s/issues?q=involves:%s" % (args.repo_name, user["user_name"])
-    html = ("<div class='contrib'><a href='%s'><img src='%s' width='128' alt='%s'></a><div align='center'>%s</div></div>\n" % 
+    html = ("<div><a href='%s'><img src='%s' width='128' alt='%s'></a><div>%s</div></div>\n" % 
         (url, user["avatar"], user["user_name"], user['name']))
     return html
