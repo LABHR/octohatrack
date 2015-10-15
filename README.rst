@@ -25,7 +25,7 @@ WARNING
 
 `octohat in Python <https://github.com/glasnt/octohat>`__ and `octohat
 in Ruby <https://github.com/glasnt/octohat-rb>`__ both create callable
-``octohat`` entites. Strange things may occur if you try to install both
+``octohat`` entities. Strange things may occur if you try to install both
 on your system.
 
 
