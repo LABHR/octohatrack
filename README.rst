@@ -20,14 +20,14 @@ Interactions include:
 
 "Let's All Build a Hat Rack" (`#LABHR`_) is an original concept by `Leslie Hawthorn`_
 
-WARNING
--------
+Read more about Octohat: 
 
-`octohat in Python <https://github.com/glasnt/octohat>`__ and `octohat
-in Ruby <https://github.com/glasnt/octohat-rb>`__ both create callable
-``octohat`` entities. Strange things may occur if you try to install both
-on your system.
-
+-  `A tool for tracking non-code GitHub
+   contributions <https://opensource.com/life/15/10/octohat-github-non-code-contribution-tracker>`__
+   on OpenSource.com
+-  Talk `"Build a Better Hat Rack: All Contributions
+   Welcome" <https://www.youtube.com/watch?v=wQxFKxbWcFM>`__ from
+   KiwiPyCon (YouTube video)
 
 Installation
 ------------
