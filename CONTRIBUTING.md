@@ -4,4 +4,4 @@ Please report bugs and open issues generously. Don't be afraid that your idea is
 
 ## Code of Conduct 
 
-This projects operates under a [Code of Conduct](https://github.com/glasnt/octohat/blob/master/code-of-conduct.md)
+This projects operates under a [Code of Conduct](https://github.com/labhr/octohatrack/blob/master/code-of-conduct.md)
