@@ -6,6 +6,5 @@ env:
 install:
   - "pip install ."
 script: 
-  - "DEBUG=true octohat glasnt/octohat-rb"
-  - "python3 octohat.py glasnt/octohat -c -g -n"
-  - "cat glasnt_octohat_contrib.html"
+  - "DEBUG=true octohatrack LABHR/octohatrack-rb"
+  - "python3 octohatrack.py LABHR/octohatrack -c -g -n"
