@@ -28,6 +28,7 @@ Read more about Octohatrack:
 -  Talk `"Build a Better Hat Rack: All Contributions
    Welcome" <https://www.youtube.com/watch?v=wQxFKxbWcFM>`__ from
    KiwiPyCon (YouTube video)
+   
 
 Installation
 ------------
@@ -80,6 +81,8 @@ License
 Octohatrack is distributed under the `MIT license`_.
 
 Octohub is Copyright (c) 2013 Alon Swartz (turnkeylinux), used inline under the GPLv3 license. 
+
+This project is not affiliated with GitHub.
 
 .. _MIT license: https://github.com/labhr/octohatrack/blob/master/LICENSE
 .. _#LABHR: https://twitter.com/search?q=%23LABHR&src=typd
