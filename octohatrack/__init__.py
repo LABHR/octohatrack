@@ -11,8 +11,8 @@ def main():
   parser.add_argument("repo_name", help="githubuser/repo")
   parser.add_argument("-g", "--generate-html", action='store_true', help="Generate output as HTML")
   parser.add_argument("-l", "--limit", help="Limit to the last x Issues/Pull Requests", type=int, default=0)
-  parser.add_argument("-c", "--show-contributors", action='store_true', help="Output the code contributors as well")
-  parser.add_argument("-n", "--show-names", action='store_true', help="")
+  parser.add_argument("-c", "--show-contributors", action='store_true', help="Output the code contributors")
+  parser.add_argument("-n", "--show-names", action='store_true', help="Show the user's display name")
   args = parser.parse_args()  
 
   repo_name = args.repo_name
