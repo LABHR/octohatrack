@@ -1,6 +1,7 @@
 # octohatrack
 
-[![image](https://travis-ci.org/LABHR/octohatrack.svg?branch=master)](https://travis-ci.org/labhr/octohatrack) [![image](https://badge.fury.io/py/octohatrack.svg)](http://badge.fury.io/py/octohatrack)
+[![image](https://travis-ci.org/LABHR/octohatrack.svg?branch=master)](https://travis-ci.org/labhr/octohatrack)
+[![image](https://badge.fury.io/py/octohatrack.svg)](http://badge.fury.io/py/octohatrack)
 
 It's easy to see your direct [code contributions](https://help.github.com/articles/why-are-my-contributions-not-showing-up-on-my-profile/)
 on GitHub, but what about everything else?
@@ -49,7 +50,9 @@ optional arguments:
 
 ```
 
-Define an environment variable for "GITHUB\_TOKEN" to use an [authentication token](https://help.github.com/articles/creating-an-access-token-for-command-line-use/) (allows for deeper searching)
+Define an environment variable for "`GITHUB_TOKEN`" to use an [authentication token](https://help.github.com/articles/creating-an-access-token-for-command-line-use/) to avoide being [Rate Limited](https://developer.github.com/v3/#rate-limiting)
+to 60 requests per hour (allows for deeper searching).
+
 
 ## Run this repo locally
 
@@ -68,6 +71,30 @@ docker build -t octohatrack .
 docker run -e GITHUB_TOKEN octohatrack [arguments]
 ```
 
+## Example output
+
+```
+python octohack.py -cn LABHR/octohatrack
+Collecting contributors....
+Collecting commentors..............................................................................................................................................................................
+Code contributions: 7
+tclark (Tom Clark)
+timgws (Tim Groeneveld)
+krockode (Kristian Perkins)
+Lukasa (Cory Benfield)
+davidjb (David Beitey)
+alicetragedy (Laura)
+glasnt (Katie McLaughlin)
+
+Non-code contributions: 7
+ncoghlan
+Ketsuban (Thomas Winwood)
+freakboy3742 (Russell Keith-Magee)
+gitter-badger (The Gitter Badger)
+SvenDowideit (Sven Dowideit)
+stewart-ibm (Stewart Smith)
+jniggemann (Jan)
+```
 
 ## To do
 
