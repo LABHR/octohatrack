@@ -24,15 +24,13 @@ Read more about octohatrack:
 -   Talk ["Build a Better Hat Rack: All Contributions Welcome"](https://www.youtube.com/watch?v=wQxFKxbWcFM) from KiwiPyCon (YouTube video)
 -   [Read about the project name change](http://glasnt.com/blog/2015/11/21/goodbye-octohat.html)
 
-Installation
-============
+## Installation
 
 ```
 pip install octohatrack
 ```
 
-Usage
-=====
+## Usage
 
 ```
 usage: octohatrack.py [-h] [-g] [-l LIMIT] [-c] [-n] repo_name
@@ -53,8 +51,7 @@ optional arguments:
 
 Define an environment variable for "GITHUB\_TOKEN" to use an [authentication token](https://help.github.com/articles/creating-an-access-token-for-command-line-use/) (allows for deeper searching)
 
-Run this repo locally
-=====================
+## Run this repo locally
 
 ```
 git clone https://github.com/labhr/octohatrack
@@ -62,21 +59,28 @@ cd octohatrack
 python3 octohatrack.py [arguments]
 ```
 
-To do
-=====
+## Run octohatrack in a Docker container
+
+```
+git clone https://github.com/labhr/octohatrack
+cd octohatrack
+docker build -t octohatrack .
+docker run -e GITHUB_TOKEN octohatrack [arguments]
+```
+
+
+## To do
 
 -   parallel processing
 -   wiki contributions
 -   include merge-only contributors as non-code contributors
 
-Code of Conduct
-===============
+## Code of Conduct
 
 Octohatrack operates under a [Code of
 Conduct](https://github.com/labhr/octohatrack/blob/master/code-of-conduct.md).
 
-License
-=======
+## License
 
 Octohatrack is distributed under the [MIT license](https://github.com/labhr/octohatrack/blob/master/LICENSE).
 
