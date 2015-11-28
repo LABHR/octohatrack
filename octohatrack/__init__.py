@@ -17,12 +17,16 @@ def main():
 
   repo_name = args.repo_name
 
-  if not repo_exists(repo_name): 
-    print("Repo does not exist: %s" % repo_name)
-    sys.exit(1)
+  try:
+    if not repo_exists(repo_name):
+      print("Repo does not exist: %s" % repo_name)
+      sys.exit(1)
 
-  code_contributors = get_code_contributors(repo_name)
-  code_commentors = get_code_commentors(repo_name, args.limit)
+    code_contributors = get_code_contributors(repo_name)
+    code_commentors = get_code_commentors(repo_name, args.limit)
+  except ValueError as e:
+    print(e)
+    sys.exit(1)
 
   non_code_contributors = []
   for user in code_commentors:

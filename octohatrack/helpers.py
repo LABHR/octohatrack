@@ -6,10 +6,10 @@ from .exceptions import ResponseError
 token = os.environ.get("GITHUB_TOKEN")
 debug = os.environ.get("DEBUG")
 
-if debug: 
-  if (token == None): 
-    print("No GITHUB_TOKEN found")
-  else: 
+if (token == None):
+    print("Warning: No GITHUB_TOKEN found - Unauthenticated requests are rate limited to 60 requests per hour.")
+else:
+  if debug:
     print("GITHUB_TOKEN found of length %d" % len(token))
 
 conn = Connection(token)
