@@ -9,12 +9,14 @@ from functools import wraps
 
 # Always run on start import
 cache_file = "cache_file.json"
+cache = {}
 
 if os.path.isfile(cache_file):
     with open(cache_file, "r") as f:
-        cache = json.load(f) 
-else:
-    cache = {}
+        try: 
+            cache = json.load(f) 
+        except ValueError:
+            pass 
 
 # Always run on exit
 def save_cache():
