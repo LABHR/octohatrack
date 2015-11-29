@@ -136,6 +136,7 @@ def get_user(uri):
     if entry is not None:
         return get_user_data(entry)
 
+@memoise
 def repo_exists(repo_name):
     try:
         repo = conn.send("GET", "/repos/%s" % repo_name)
