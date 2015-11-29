@@ -30,14 +30,16 @@ def main():
     if user not in code_contributors:
       non_code_contributors.append(user)
 
-  print("Code contributions: %d" % len(code_contributors))
+  code_contributors = sorted(code_contributors, key=lambda k: k['user_name'].lower()) 
+  non_code_contributors = sorted(non_code_contributors, key=lambda k: k['user_name'].lower()) 
+
+  print("\nCode contributions: %d" % len(code_contributors))
 
   if args.show_contributors:
     for user in code_contributors: 
       display_user_name(user, args)
-    print()
   
-  print("Non-code contributions: %d" % len(non_code_contributors))
+  print("\nNon-code contributions: %d" % len(non_code_contributors))
 
   for user in non_code_contributors: 
     display_user_name(user, args)
@@ -76,7 +78,7 @@ def main():
     
     f.close()
 
-    print("Generated HTML representation, saved to %s" % html_file)
+    print("\nGenerated HTML representation, saved to %s" % html_file)
 
 if __name__ == "__main__":
     main()
