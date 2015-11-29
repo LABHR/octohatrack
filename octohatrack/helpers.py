@@ -1,8 +1,39 @@
 import os
 import sys
+import atexit
+import json
 from .connection import Connection, Pager
 from .exceptions import ResponseError
 from .generatehtml import generate_html
+from functools import wraps
+
+
+# Always run on start import
+cache_file = "cache_file.json"
+
+if os.path.isfile(cache_file):
+    with open(cache_file, "r") as f:
+        cache = json.load(f) 
+else:
+    cache = {}
+
+# Always run on exit
+def save_cache():
+    with open(cache_file, 'w') as f:
+        json.dump(cache, f)
+
+atexit.register(save_cache)
+
+def memoise(wrapped):
+
+    @wraps(wrapped)
+    def wrapper(*args, **kwargs):
+        key = args[0]
+        if key not in cache:
+            cache[key] = wrapped(*args, **kwargs)
+        return cache[key]
+
+    return wrapper
 
 token = os.environ.get("GITHUB_TOKEN")
 debug = os.environ.get("DEBUG")
@@ -32,8 +63,8 @@ def get_code_contributors(repo_name):
   progress_complete()
   return unique(users)
 
+@memoise
 def get_code_commentors(repo_name, limit):
-  progress("Collecting commentors")
   pri_count = get_pri_count(repo_name)
   if limit == 0:
      minimum = 1

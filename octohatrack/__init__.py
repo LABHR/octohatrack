@@ -22,6 +22,8 @@ def main():
       sys.exit(1)
 
     code_contributors = get_code_contributors(repo_name)
+    
+    progress("Collecting commentors")
     code_commentors = get_code_commentors(repo_name, args.limit)
   except ValueError as e:
     print(e)
@@ -36,7 +38,7 @@ def main():
   code_contributors = sorted(code_contributors, key=lambda k: k['user_name'].lower()) 
   non_code_contributors = sorted(non_code_contributors, key=lambda k: k['user_name'].lower()) 
 
-  print("\nCode contributions: %d" % len(code_contributors))
+  print("\n\nCode contributions: %d" % len(code_contributors))
 
   if args.show_contributors:
     for user in code_contributors: 
