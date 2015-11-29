@@ -87,7 +87,6 @@ def get_code_commentors(repo_name, limit):
 
   users = []
   for index in range(minimum, pri_count + 1):
-      progress_advance()
       users.append(get_user("/repos/%s/pulls/%d" % (repo_name, index)))
       users.append(get_user("/repos/%s/issues/%d" % (repo_name, index)))
 

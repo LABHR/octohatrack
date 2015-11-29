@@ -36,7 +36,7 @@ def main():
   code_contributors = sorted(code_contributors, key=lambda k: k['user_name'].lower()) 
   non_code_contributors = sorted(non_code_contributors, key=lambda k: k['user_name'].lower()) 
 
-  print("\n\nCode contributions: %d" % len(code_contributors))
+  print("\nCode contributions: %d" % len(code_contributors))
 
   if args.show_contributors:
     for user in code_contributors: 
