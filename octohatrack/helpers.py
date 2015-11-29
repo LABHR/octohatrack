@@ -7,7 +7,6 @@ from .exceptions import ResponseError
 from .generatehtml import generate_html
 from functools import wraps
 
-
 # Always run on start import
 cache_file = "cache_file.json"
 
@@ -47,24 +46,37 @@ else:
 conn = Connection(token)
   
 def unique(array): 
+  array = [x for x in array if x is not None]
   return list({v['user_name']:v for v in array}.values())
 
 def flatten(array):
   return [item for sublist in array for item in sublist]
 
+@memoise
+def get_paged_json(uri):
+  json = []
+  try: 
+      pager = Pager(conn, uri, params={}, max_pages=0)
+      for response in pager:
+          progress_advance()
+          json += response.json()
+  except ResponseError:
+        pass
+
+  return json
+
 def get_code_contributors(repo_name): 
   progress("Collecting contributors")
   users = []
-  pager = Pager(conn, "/repos/%s/contributors" % repo_name, params={}, max_pages=0)
-  for response in pager:
-      progress_advance()
-      for entry in response.json():
-          users.append(get_user_data(entry))
+  response = get_paged_json("/repos/%s/contributors" % repo_name)
+  for entry in response:
+      users.append(get_user_data(entry))
   progress_complete()
   return unique(users)
 
-@memoise
 def get_code_commentors(repo_name, limit):
+  progress("Collecting commentors")
+
   pri_count = get_pri_count(repo_name)
   if limit == 0:
      minimum = 1
@@ -73,22 +85,25 @@ def get_code_commentors(repo_name, limit):
 
   users = []
   for index in range(minimum, pri_count + 1):
+      progress_advance()
       users.append(get_user("/repos/%s/pulls/%d" % (repo_name, index)))
       users.append(get_user("/repos/%s/issues/%d" % (repo_name, index)))
-      users.append(get_users("/repos/%s/pulls/%d/comments" % (repo_name, index)))
-      users.append(get_users("/repos/%s/issues/%d/comments" % (repo_name, index)))
+
+      json = get_paged_json("/repos/%s/pulls/%d/comments" % (repo_name, index))
+      json += get_paged_json("/repos/%s/issues/%d/comments" % (repo_name, index))
+      for entry in json:
+            users.append(get_user_data(entry))
   progress_complete()
 
-  return unique(flatten(users))
+  return unique(users)
 
-
+@memoise
 def get_data(uri):
     try: 
       resp = conn.send("GET", uri)
       return resp.json()
     except ResponseError as e: 
       return None
-
 
 def get_pri_count(repo_name):
     prs = get_data("/repos/%s/pulls?state=all" % repo_name)
@@ -113,26 +128,12 @@ def get_user_data(entry):
     else:
       return {"user_name": entry["login"], "avatar": "%s&s=128" % entry["avatar_url"], "name": get_user_name(entry["login"])}
 
+@memoise
 def get_user(uri):
     progress_advance()
     entry = get_data(uri)
     if entry is not None:
-        return [get_user_data(entry)]
-    else:
-        return []
-
-def get_users(uri):
-    users = []
-    try:
-        pager = Pager(conn, uri, params={}, max_pages=0)
-        for response in pager:
-            progress_advance()
-            for entry in response.json():
-                users.append(get_user_data(entry))
-    except ResponseError as e:
-        pass
-
-    return users
+        return get_user_data(entry)
 
 def repo_exists(repo_name):
     try:

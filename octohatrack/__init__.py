@@ -22,8 +22,6 @@ def main():
       sys.exit(1)
 
     code_contributors = get_code_contributors(repo_name)
-    
-    progress("Collecting commentors")
     code_commentors = get_code_commentors(repo_name, args.limit)
   except ValueError as e:
     print(e)
