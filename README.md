@@ -74,27 +74,34 @@ docker run -e GITHUB_TOKEN octohatrack [arguments]
 ## Example output
 
 ```
-$ python3 octohatrack.py LABHR/octohatrack -nc
+$ python3 octohatrack.py LABHR/octohatrack -gnc
 Collecting contributors....
-Collecting commentors.........................................................................................................................................................................................................
+Collecting commentors.............................................................................................................................................................................................................
+
 Code contributions: 8
-glasnt (Katie McLaughlin)
-Lukasa (Cory Benfield)
-davidjb (David Beitey)
 alicetragedy (Laura)
+davidjb (David Beitey)
+glasnt (Katie McLaughlin)
 krockode (Kristian Perkins)
-timgws (Tim Groeneveld)
+Lukasa (Cory Benfield)
 SvenDowideit (Sven Dowideit)
 tclark (Tom Clark)
+timgws (Tim Groeneveld)
 
-Non-code contributions: 6
+Non-code contributions: 7
+dshafik (Davey Shafik)
+freakboy3742 (Russell Keith-Magee)
+gitter-badger (The Gitter Badger)
 jniggemann (Jan)
+Ketsuban (Thomas Winwood)
 ncoghlan
 stewart-ibm (Stewart Smith)
-gitter-badger (The Gitter Badger)
-freakboy3742 (Russell Keith-Magee)
-Ketsuban (Thomas Winwood)
+
+Generated HTML representation, saved to LABHR_octohatrack_contrib.html
 ```
+
+![sample output](sample_output.png)
+
 
 ## To do
 
