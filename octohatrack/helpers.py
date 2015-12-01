@@ -90,10 +90,12 @@ def get_code_commentors(repo_name, limit):
       users.append(get_user("/repos/%s/pulls/%d" % (repo_name, index)))
       users.append(get_user("/repos/%s/issues/%d" % (repo_name, index)))
 
-      json = get_paged_json("/repos/%s/pulls/%d/comments" % (repo_name, index))
-      json += get_paged_json("/repos/%s/issues/%d/comments" % (repo_name, index))
-      for entry in json:
+      for entry in get_paged_json("/repos/%s/pulls/%d/comments" % (repo_name, index)):
             users.append(get_user_data(entry))
+
+      for entry in get_paged_json("/repos/%s/issues/%d/comments" % (repo_name, index)):
+            users.append(get_user_data(entry))
+
   progress_complete()
 
   return unique(users)
