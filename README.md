@@ -103,6 +103,18 @@ Generated HTML representation, saved to LABHR_octohatrack_contrib.html
 ![sample output](sample_output.png)
 
 
+## Debugging
+
+### Cache
+
+As of octohatrack 0.3.0, there is now a cache that gets created. 
+Any time an external API call is made, it gets saved to a local
+cache file so that any subsequent calls don't have to burn an API call.
+If you encounter troubles, or which to remove the cache, remove the
+`cache_file.json`. If you experience ongoing issues with the caching,
+please [log a detailed issue describing what you're seeing](https://github.com/LABHR/octohatrack/issues/new)
+
+
 ## To do
 
 -   parallel processing
