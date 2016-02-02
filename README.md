@@ -25,7 +25,8 @@ original concept by [Leslie Hawthorn](http://hawthornlandings.org/2015/02/13/a-p
 Read more about octohatrack:
 
 -   [A tool for tracking non-code GitHub contributions](https://opensource.com/life/15/10/octohatrack-github-non-code-contribution-tracker) on OpenSource.com
--   Talk ["Build a Better Hat Rack: All Contributions Welcome"](https://www.youtube.com/watch?v=wQxFKxbWcFM) from KiwiPyCon (YouTube video)
+-   [Acknowledging Non-Coding Contributions](https://modelviewculture.com/pieces/acknowledging-non-coding-contributions) on ModelViewCulture.com
+-   [Build a Better Hat Rack: All Contributions Welcome](https://www.youtube.com/watch?v=wQxFKxbWcFM) from KiwiPyCon (YouTube video)
 -   [Read about the project name change](http://glasnt.com/blog/2015/11/21/goodbye-octohat.html)
 
 ## Installation
@@ -120,9 +121,8 @@ please [log a detailed issue describing what you're seeing](https://github.com/L
 
 ## To do
 
--   parallel processing
--   wiki contributions
 -   include merge-only contributors as non-code contributors
+-   verify cprrect statistics from repos with multi-person Pull Requests
 
 ## Code of Conduct
 
