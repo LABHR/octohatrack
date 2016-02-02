@@ -12,6 +12,7 @@ def main():
   parser.add_argument("-l", "--limit", help="Limit to the last x Issues/Pull Requests", type=int, default=0)
   parser.add_argument("-c", "--show-contributors", action='store_true', help="Output the code contributors")
   parser.add_argument("-n", "--show-names", action='store_true', help="Show the user's display name")
+  parser.add_argument("--no-cache", action='store_false', help='Disable local caching of API results')
   args = parser.parse_args()  
 
   repo_name = args.repo_name

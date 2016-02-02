@@ -8,3 +8,4 @@ install:
 script: 
   - "DEBUG=true octohatrack LABHR/octohatrack-rb"
   - "python3 octohatrack.py LABHR/octohatrack -c -g -n"
+  - "python3 octohatrack.py LABHR/octohatrack-rb --no-cache"
