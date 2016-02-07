@@ -7,25 +7,27 @@ from .exceptions import ResponseError
 from .generatehtml import generate_html
 from functools import wraps
 
-# Always run on start import
-cache_file = "cache_file.json"
-cache = {}
+if "--no-cache" not in sys.argv: 
 
-if os.path.isfile(cache_file):
-    with open(cache_file, "r") as f:
-        try: 
-            cache = json.load(f) 
-        except ValueError:
-            pass 
+  # Always run on start import
+  cache_file = "cache_file.json"
+  cache = {}
 
-# Always run on exit
-def save_cache():
-    with open(cache_file, 'w') as f:
-        json.dump(cache, f)
+  if os.path.isfile(cache_file):
+      with open(cache_file, "r") as f:
+          try: 
+              cache = json.load(f) 
+          except ValueError:
+              pass 
 
-atexit.register(save_cache)
+  # Always run on exit
+  def save_cache():
+      with open(cache_file, 'w') as f:
+          json.dump(cache, f)
 
-def memoise(wrapped):
+  atexit.register(save_cache)
+
+  def memoise(wrapped):
 
     @wraps(wrapped)
     def wrapper(*args, **kwargs):
@@ -33,6 +35,16 @@ def memoise(wrapped):
         if key not in cache:
             cache[key] = wrapped(*args, **kwargs)
         return cache[key]
+
+    return wrapper
+
+else:
+  # Disable memoisation, force all calls to happen regardless
+  def memoise(wrapped):
+
+    @wraps(wrapped)
+    def wrapper(*args, **kwargs):
+      return wrapped(*args, **kwargs)
 
     return wrapper
 
