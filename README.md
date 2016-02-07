@@ -51,10 +51,11 @@ optional arguments:
   -c, --show-contributors
                         Output the code contributors
   -n, --show-names      Show the user's display name
+  --no-cache            Disable local caching of API results
 
 ```
 
-Define an environment variable for "`GITHUB_TOKEN`" to use an [authentication token](https://help.github.com/articles/creating-an-access-token-for-command-line-use/) to avoide being [Rate Limited](https://developer.github.com/v3/#rate-limiting)
+Define an environment variable for `GITHUB_TOKEN` to use an [authentication token](https://help.github.com/articles/creating-an-access-token-for-command-line-use/) to avoide being [Rate Limited](https://developer.github.com/v3/#rate-limiting)
 to 60 requests per hour (allows for deeper searching).
 
 
@@ -78,22 +79,23 @@ docker run -e GITHUB_TOKEN octohatrack [arguments]
 ## Example output
 
 ```
-$ python3 octohatrack.py LABHR/octohatrack -gnc
-Collecting contributors....
-Collecting commentors.............................................................................................................................................................................................................
+Collecting contributors...
+Collecting commentors............................................................................................................................................................................................
 
-Code contributions: 8
+Code contributions: 9
 alicetragedy (Laura)
 davidjb (David Beitey)
 glasnt (Katie McLaughlin)
-krockode (Kristian Perkins)
+kristianperkins (Kristian Perkins)
 Lukasa (Cory Benfield)
+mfs (Mike Sampson)
 SvenDowideit (Sven Dowideit)
 tclark (Tom Clark)
 timgws (Tim Groeneveld)
 
-Non-code contributions: 7
+Non-code contributions: 8
 dshafik (Davey Shafik)
+edunham (E. Dunham)
 freakboy3742 (Russell Keith-Magee)
 gitter-badger (The Gitter Badger)
 jniggemann (Jan)
