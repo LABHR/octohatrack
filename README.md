@@ -38,7 +38,7 @@ pip install octohatrack
 ## Usage
 
 ```
-usage: octohatrack.py [-h] [-g] [-l LIMIT] [-c] [-n] repo_name
+usage: octohatrack.py [-h] [-g] [-l LIMIT] [-c] [-n] [--no-cache] repo_name
 
 positional arguments:
   repo_name             githubuser/repo
@@ -114,8 +114,12 @@ Generated HTML representation, saved to LABHR_octohatrack_contrib.html
 As of octohatrack 0.3.0, there is now a cache that gets created. 
 Any time an external API call is made, it gets saved to a local
 cache file so that any subsequent calls don't have to burn an API call.
-If you encounter troubles, or wish to remove the cache, remove the
-`cache_file.json`. If you experience ongoing issues with the caching,
+
+You can disable the cache by using the `--no-cache` flag. 
+
+To reset the cache, remove the `cache_file.json` file.
+
+If you experience ongoing issues with the caching,
 please [log a detailed issue describing what you're seeing](https://github.com/LABHR/octohatrack/issues/new)
 
 
