@@ -1,6 +1,9 @@
 # ignore locally generated html files
 *.html
 
+# Ignore local cache file
+cache_file.json
+
 # Distribution / packaging
 bin/
 build/
