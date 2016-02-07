@@ -7,8 +7,6 @@ from .exceptions import ResponseError
 from .generatehtml import generate_html
 from functools import wraps
 
-print(sys.argv)
-
 if "--no-cache" not in sys.argv: 
 
   # Always run on start import
