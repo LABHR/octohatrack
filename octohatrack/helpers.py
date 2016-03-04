@@ -4,7 +4,6 @@ import atexit
 import json
 from .connection import Connection, Pager
 from .exceptions import ResponseError
-from .generatehtml import generate_html
 from functools import wraps
 
 
