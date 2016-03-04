@@ -39,6 +39,5 @@ def main():
   display_users(code_contributors, "Code contributors")
   display_users(non_code_contributors, "Non-coding contributors")
 
-
 if __name__ == "__main__":
   main()

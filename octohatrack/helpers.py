@@ -195,13 +195,6 @@ def get_user_name(login):
     user["name"] = login
   return user["name"]
 
-
-def display_user_name(user):
-  if user["name"] != user["user_name"]:
-    print("%s (%s)" % (user["user_name"], user['name']))
-  else:
-    print(user["user_name"])
-
 def consolidate(contributors, commentors):
   non_code_contributors = []
   for user in commentors:
@@ -211,8 +204,14 @@ def consolidate(contributors, commentors):
 
   return non_code_contributors
 
-def display_users(user_list, title): 
+def display_users(user_list, title, array=False): 
   print("\n%s: %d" % (title, len(user_list)))
-  for user in sorted(user_list,  key=lambda k: k['user_name'].lower()):
-    display_user_name(user)
+  if array: 
+    print("\n".join(user_list))
+  else:
+    for user in sorted(user_list,  key=lambda k: k['user_name'].lower()):
+      if user["name"] != user["user_name"]:
+        print("%s (%s)" % (user["user_name"], user['name']))
+      else:
+        print(user["user_name"])
     
