@@ -2,11 +2,13 @@
 
 import argparse
 import sys
+import pkg_resources
 from .helpers import (generate_html, repo_exists, get_code_commentors,
                       get_code_contributors, display_user_name)
 
 
 def main():
+  version = pkg_resources.require("octohatrack")[0].version
 
   parser = argparse.ArgumentParser()
   parser.add_argument("repo_name", help="githubuser/repo")
@@ -21,6 +23,9 @@ def main():
                       help="Show the user's display name")
   parser.add_argument("--no-cache", action='store_false',
                       help='Disable local caching of API results')
+  parser.add_argument("-v", "--version", action='version',
+                      version="octohatrack version %s" % version)
+
   args = parser.parse_args()
 
   repo_name = args.repo_name
