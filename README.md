@@ -38,21 +38,18 @@ pip install octohatrack
 ## Usage
 
 ```
-usage: octohatrack.py [-h] [-g] [-l LIMIT] [-c] [-n] [--no-cache] repo_name
+$ octohatrack --help
+usage: octohatrack.py [-h] [-l LIMIT] [--no-cache] [-v] repo_name
 
 positional arguments:
   repo_name             githubuser/repo
 
 optional arguments:
   -h, --help            show this help message and exit
-  -g, --generate-html   Generate output as HTML
   -l LIMIT, --limit LIMIT
                         Limit to the last x Issues/Pull Requests
-  -c, --show-contributors
-                        Output the code contributors
-  -n, --show-names      Show the user's display name
   --no-cache            Disable local caching of API results
-
+  -v, --version         show program's version number and exit
 ```
 
 Define an environment variable for `GITHUB_TOKEN` to use an [authentication token](https://help.github.com/articles/creating-an-access-token-for-command-line-use/) to avoide being [Rate Limited](https://developer.github.com/v3/#rate-limiting)
@@ -82,7 +79,7 @@ docker run -e GITHUB_TOKEN octohatrack [arguments]
 Collecting contributors...
 Collecting commentors............................................................................................................................................................................................
 
-Code contributions: 9
+Code contributors: 10
 alicetragedy (Laura)
 davidjb (David Beitey)
 glasnt (Katie McLaughlin)
@@ -90,23 +87,22 @@ kristianperkins (Kristian Perkins)
 Lukasa (Cory Benfield)
 mfs (Mike Sampson)
 SvenDowideit (Sven Dowideit)
+tacaswell (Thomas A Caswell)
 tclark (Tom Clark)
 timgws (Tim Groeneveld)
 
-Non-code contributions: 8
+Non-coding contributors: 10
+brainwane (Sumana Harihareswara)
 dshafik (Davey Shafik)
 edunham (E. Dunham)
 freakboy3742 (Russell Keith-Magee)
 gitter-badger (The Gitter Badger)
 jniggemann (Jan)
 Ketsuban (Thomas Winwood)
+leesdolphin (Lee Symes)
 ncoghlan
 stewart-ibm (Stewart Smith)
-
-Generated HTML representation, saved to LABHR_octohatrack_contrib.html
 ```
-
-![sample output](sample_output.png)
 
 
 ## Debugging
@@ -128,7 +124,7 @@ please [log a detailed issue describing what you're seeing](https://github.com/L
 ## To do
 
 -   include merge-only contributors as non-code contributors
--   verify cprrect statistics from repos with multi-person Pull Requests
+-   verify correct statistics from repos with multi-person Pull Requests (#65)
 
 ## Code of Conduct
 
