@@ -3,24 +3,17 @@
 import argparse
 import sys
 import pkg_resources
-from .helpers import (generate_html, repo_exists, get_code_commentors,
-                      get_code_contributors, display_user_name)
-
+from .helpers import (repo_exists, get_code_commentors,
+                      get_code_contributors, consolidate, display_users)
 
 def main():
   version = pkg_resources.require("octohatrack")[0].version
 
   parser = argparse.ArgumentParser()
   parser.add_argument("repo_name", help="githubuser/repo")
-  parser.add_argument("-g", "--generate-html", action='store_true',
-                      help="Generate output as HTML")
   parser.add_argument("-l", "--limit",
                       help="Limit to the last x Issues/Pull Requests",
                       type=int, default=0)
-  parser.add_argument("-c", "--show-contributors", action='store_true',
-                      help="Output the code contributors")
-  parser.add_argument("-n", "--show-names", action='store_true',
-                      help="Show the user's display name")
   parser.add_argument("--no-cache", action='store_false',
                       help='Disable local caching of API results')
   parser.add_argument("-v", "--version", action='version',
@@ -41,30 +34,10 @@ def main():
     print(e)
     sys.exit(1)
 
-  non_code_contributors = []
-  for user in code_commentors:
-    user_name, avatar, name = user
-    if user not in code_contributors:
-      non_code_contributors.append(user)
+  non_code_contributors = consolidate(code_contributors, code_commentors)
 
-  code_contributors = sorted(code_contributors,
-                             key=lambda k: k['user_name'].lower())
-  non_code_contributors = sorted(non_code_contributors,
-                                 key=lambda k: k['user_name'].lower())
-
-  print("\nCode contributions: %d" % len(code_contributors))
-
-  if args.show_contributors:
-    for user in code_contributors:
-      display_user_name(user, args)
-
-  print("\nNon-code contributions: %d" % len(non_code_contributors))
-
-  for user in non_code_contributors:
-    display_user_name(user, args)
-
-  if args.generate_html:
-    generate_html(code_contributors, non_code_contributors, args)
+  display_users(code_contributors, "Code contributors")
+  display_users(non_code_contributors, "Non-coding contributors")
 
 
 if __name__ == "__main__":

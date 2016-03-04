@@ -197,8 +197,23 @@ def get_user_name(login):
   return user["name"]
 
 
-def display_user_name(user, args):
-  if args.show_names and user["name"] != user["user_name"]:
+def display_user_name(user):
+  if user["name"] != user["user_name"]:
     print("%s (%s)" % (user["user_name"], user['name']))
   else:
     print(user["user_name"])
+
+def consolidate(contributors, commentors):
+  non_code_contributors = []
+  for user in commentors:
+    user_name, avatar, name = user
+    if user not in contributors:
+        non_code_contributors.append(user)
+
+  return non_code_contributors
+
+def display_users(user_list, title): 
+  print("\n%s: %d" % (title, len(user_list)))
+  for user in sorted(user_list,  key=lambda k: k['user_name'].lower()):
+    display_user_name(user)
+    
