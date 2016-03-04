@@ -19,8 +19,25 @@ def main():
   parser.add_argument("-v", "--version", action='version',
                       version="octohatrack version %s" % version)
 
+  # Deprecated
+  parser.add_argument("-c", "--show-contributors", action='store_true',
+                      help="DEPRECATED - Output the code contributors")
+  parser.add_argument("-n", "--show-names", action='store_true',
+                      help="DEPRECATED - Show the user's display name")
+  parser.add_argument("-g", "--generate-html", action='store_true',
+                      help="DEPRECATED - Generate output as HTML")
+
   args = parser.parse_args()
 
+  if args.show_contributors:
+    print("The --show-contributors (-c) flag is deprecated. Ignoring.")
+
+  if args.show_names:
+    print("The --show-contributors (-n) flag is deprecated. Ignoring.")
+  
+  if args.generate_html:
+    print("The --generate-html (-g) flag is deprecated. Ignoring.")
+  
   repo_name = args.repo_name
 
   try:
