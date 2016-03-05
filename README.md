@@ -1,10 +1,10 @@
 # octohatrack
 
 [![Travis](https://img.shields.io/travis/LABHR/octohatrack.svg)](https://travis-ci.org/LABHR/octohatrack)
-[![PyPI](https://img.shields.io/pypi/v/octohatrack.svg)]()
-[![PyPI](https://img.shields.io/pypi/pyversions/octohatrack.svg)]()
-[![PyPI](https://img.shields.io/pypi/l/octohatrack.svg)]()
-[![PyPI](https://img.shields.io/pypi/implementation/octohatrack.svg)]()
+![PyPI](https://img.shields.io/pypi/v/octohatrack.svg)
+![PyPI](https://img.shields.io/pypi/pyversions/octohatrack.svg)
+![PyPI](https://img.shields.io/pypi/l/octohatrack.svg)
+![PyPI](https://img.shields.io/pypi/implementation/octohatrack.svg)
 
 It's easy to see your direct [code contributions](https://help.github.com/articles/why-are-my-contributions-not-showing-up-on-my-profile/)
 on GitHub, but what about everything else?
