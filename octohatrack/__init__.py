@@ -5,6 +5,7 @@ import sys
 import pkg_resources
 from .helpers import (repo_exists, get_code_commentors,
                       get_code_contributors, consolidate, display_users)
+from .wiki import (get_wiki_contributors)
 
 def main():
   version = pkg_resources.require("octohatrack")[0].version
@@ -16,6 +17,8 @@ def main():
                       type=int, default=0)
   parser.add_argument("--no-cache", action='store_false',
                       help='Disable local caching of API results')
+  parser.add_argument("-w", "--wiki", action='store_true',
+                      help="Experimental: Show wiki contributions, if available")
   parser.add_argument("-v", "--version", action='version',
                       version="octohatrack version %s" % version)
 
@@ -53,8 +56,14 @@ def main():
 
   non_code_contributors = consolidate(code_contributors, code_commentors)
 
+  if args.wiki:
+    wiki_contributors = get_wiki_contributors(repo_name, code_contributors, non_code_contributors)
+
   display_users(code_contributors, "Code contributors")
   display_users(non_code_contributors, "Non-coding contributors")
+
+  if args.wiki:
+    display_users(wiki_contributors, "Wiki contributors")
 
 if __name__ == "__main__":
   main()

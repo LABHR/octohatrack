@@ -6,7 +6,6 @@ from .connection import Connection, Pager
 from .exceptions import ResponseError
 from functools import wraps
 
-
 if "--no-cache" not in sys.argv:
   # Always run on start import
   cache_file = "cache_file.json"

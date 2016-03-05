@@ -21,7 +21,7 @@ setup(
         'Programming Language :: Python :: 3',
     ],
     keywords='octohatrack github contributions non-code',
-    install_requires=['requests', 'simplejson'],
+    install_requires=['requests', 'simplejson', 'gitpython'],
     entry_points={
       'console_scripts': [ "octohatrack = octohatrack:main" ]
     },
