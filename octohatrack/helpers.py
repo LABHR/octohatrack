@@ -4,7 +4,6 @@ import atexit
 import json
 from .connection import Connection, Pager
 from .exceptions import ResponseError
-from .generatehtml import generate_html
 from functools import wraps
 
 
@@ -196,9 +195,23 @@ def get_user_name(login):
     user["name"] = login
   return user["name"]
 
+def consolidate(contributors, commentors):
+  non_code_contributors = []
+  for user in commentors:
+    user_name, avatar, name = user
+    if user not in contributors:
+        non_code_contributors.append(user)
 
-def display_user_name(user, args):
-  if args.show_names and user["name"] != user["user_name"]:
-    print("%s (%s)" % (user["user_name"], user['name']))
+  return non_code_contributors
+
+def display_users(user_list, title, array=False): 
+  print("\n%s: %d" % (title, len(user_list)))
+  if array: 
+    print("\n".join(user_list))
   else:
-    print(user["user_name"])
+    for user in sorted(user_list,  key=lambda k: k['user_name'].lower()):
+      if user["name"] != user["user_name"]:
+        print("%s (%s)" % (user["user_name"], user['name']))
+      else:
+        print(user["user_name"])
+    
