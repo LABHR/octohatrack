@@ -1,6 +1,9 @@
 # ignore locally generated html files
 *.html
 
+# ignore locally cloned github wiki repo
+tmprepo/
+
 # Ignore local cache file
 cache_file.json
 
