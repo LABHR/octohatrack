@@ -139,7 +139,7 @@ def get_data(uri):
   try:
     resp = conn.send("GET", uri)
     return resp.json()
-  except ResponseError:
+  except ResponseError as e:
     return None
 
 
