@@ -82,11 +82,25 @@ def get_paged_json(uri):
 
   return json
 
+#@memoise
+def get_page_int_json(uri):
+   json = []
+   page = 1
+   while True:
+      progress_advance()
+      response = get_data("%s?page=%d" % (uri, page))
+      if len(response) == 0:
+         break
+      else:
+         page = page + 1
+         json += response
+   return json
+
 
 def get_code_contributors(repo_name):
   progress("Collecting contributors")
   users = []
-  response = get_paged_json("/repos/%s/contributors" % repo_name)
+  response = get_page_int_json("/repos/%s/contributors" % repo_name)
   for entry in response:
     users.append(get_user_data(entry))
   progress_complete()

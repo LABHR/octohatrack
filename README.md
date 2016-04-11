@@ -91,7 +91,7 @@ tacaswell (Thomas A Caswell)
 tclark (Tom Clark)
 timgws (Tim Groeneveld)
 
-Non-coding contributors: 10
+Non-coding contributors: 11
 brainwane (Sumana Harihareswara)
 dshafik (Davey Shafik)
 edunham (E. Dunham)
@@ -99,6 +99,7 @@ freakboy3742 (Russell Keith-Magee)
 gitter-badger (The Gitter Badger)
 jniggemann (Jan)
 Ketsuban (Thomas Winwood)
+KirstieJane (Kirstie Whitaker)
 leesdolphin (Lee Symes)
 ncoghlan
 stewart-ibm (Stewart Smith)

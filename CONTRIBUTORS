@@ -1,0 +1,41 @@
+#
+# There are many wonderful contributors to LABHR, and octohatrack
+#
+# A live version of the contributors captured within GitHub is available at:
+#
+#    https://labhr.github.io/hatrack/#repo=LABHR/octohatrack
+#
+# The listing here is for addition people of fantasticness
+#
+# ---------------------------------------------------------------------------
+#
+# For her amazing blogpost that started all this: 
+
+Leslie Hawthorn <twitter:@lhawthorn>
+
+# For being awesome in general, and being the other lady at that coffee chat that one time:
+
+Deb Nicholson <twitter:@baconandcoconut>
+
+#
+# Thank you <3
+#
+# ---------------------------------------------------------------------------
+# ---------------------------------------------------------------------------
+#
+#  This file can be used to attribute people who have not interacted with a 
+# project on GitHub. 
+#
+# Format: 
+# 
+#   Display Name <email@domain.com>
+#   Display Name <twitter:@twitterusername>
+#   Display Name <github:@githubusername>
+#
+# Any lines starting with `#` (like this one) aren't parsed. 
+#
+# Lines with <email@domain> are thrown into Gravatar to attempt to get an avatar
+# Lines with <github:@githubusername> are thrown at the GitHub API to attempt to get an avatar 
+# Lines with <twitter:@twitterusername> are thrown at the Twitter API to attempt to get an avatar (useful for those who don't want a public email listed, and may not have a GitHub account at all)
+#
+
