@@ -6,6 +6,9 @@ from .connection import Connection, Pager
 from .exceptions import ResponseError
 from functools import wraps
 
+
+## System Startup tasks
+
 if "--no-cache" not in sys.argv:
   # Always run on start import
   cache_file = "cache_file.json"
@@ -59,16 +62,7 @@ else:
 
 conn = Connection(token)
 
-
-def unique(array):
-  array = [x for x in array if x is not None]
-  return list({v['user_name']: v for v in array}.values())
-
-
-def flatten(array):
-  return [item for sublist in array for item in sublist]
-
-
+# Walk a json endpoint where pagination is link driven
 @memoise
 def get_paged_json(uri):
   json = []
@@ -82,7 +76,8 @@ def get_paged_json(uri):
 
   return json
 
-#@memoise
+# Walk a json endpoint where pagination is integer driven
+@memoise
 def get_page_int_json(uri):
    json = []
    page = 1
@@ -96,19 +91,20 @@ def get_page_int_json(uri):
          json += response
    return json
 
-
-def get_code_contributors(repo_name):
-  progress("Collecting contributors")
+# Get the users defined by GitHub as contributors
+def get_api_contributors(repo_name):
+  progress("Collecting API contributors")
   users = []
   response = get_page_int_json("/repos/%s/contributors" % repo_name)
   for entry in response:
     users.append(get_user_data(entry))
   progress_complete()
-  return unique(users)
 
+  return users
 
-def get_code_commentors(repo_name, limit):
-  progress("Collecting commentors")
+# Get all Pull Requests and Issues (PRI) users
+def get_pri_contributors(repo_name, limit):
+  progress("Collecting all repo contributors")
 
   pri_count = get_pri_count(repo_name)
   if limit == 0:
@@ -131,7 +127,12 @@ def get_code_commentors(repo_name, limit):
 
   progress_complete()
 
-  return unique(users)
+  return users
+
+def unique_users(a, b, c):
+  f = a + b + c
+  array = [x for x in f if x is not None]
+  return list({v['user_name']: v for v in array}.values())
 
 
 @memoise
@@ -142,7 +143,7 @@ def get_data(uri):
   except ResponseError:
     return None
 
-
+# Get the number of Pull Requests and Issues
 def get_pri_count(repo_name):
   prs = get_data("/repos/%s/pulls?state=all" % repo_name)
   issues = get_data("/repos/%s/issues?state=all" % repo_name)
@@ -202,23 +203,22 @@ def progress_complete():
   sys.stdout.write("\n")
 
 
-def get_user_name(login):
-  user = get_data("/users/%s" % login)
-  if user["name"] is None:
-    user["name"] = login
-  return user["name"]
+def display_results(repo_name, api_contributors, all_contributors):
+    print("")
 
-def consolidate(contributors, commentors):
-  non_code_contributors = []
-  for user in commentors:
-    user_name, avatar, name = user
-    if user not in contributors:
-        non_code_contributors.append(user)
+    print("GitHub Contributors:")
+    display_users(api_contributors)
+    print("")
+    
+    print("All Contributors:")
+    display_users(all_contributors)
+    print("")
 
-  return non_code_contributors
+    print("Repo: %s" % repo_name)
+    print("GitHub Contributors: %s" % len(api_contributors))
+    print("All Contributors: %s" % len(all_contributors))
 
-def display_users(user_list, title, array=False): 
-  print("\n%s: %d" % (title, len(user_list)))
+def display_users(user_list, array=False): 
   if array: 
     print("\n".join(user_list))
   else:
@@ -228,3 +228,9 @@ def display_users(user_list, title, array=False):
       else:
         print(user["user_name"])
     
+def get_user_name(login):
+  user = get_data("/users/%s" % login)
+  if user["name"] is None:
+    user["name"] = login
+  return user["name"]
+
