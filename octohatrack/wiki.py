@@ -72,6 +72,6 @@ def get_wiki_contributors(repo_name):
     for entry in response:
         user = get_user_data({"login": str(entry), "avatar_url": ""})
         if user is not None:
-            wiki.append(user)
+            users.append(user)
 
     return users

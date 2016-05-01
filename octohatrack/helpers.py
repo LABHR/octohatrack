@@ -97,7 +97,9 @@ def get_api_contributors(repo_name):
   users = []
   response = get_page_int_json("/repos/%s/contributors" % repo_name)
   for entry in response:
-    users.append(get_user_data(entry))
+    user = get_user_data(entry)
+    if user is not None:
+      users.append(user)
   progress_complete()
 
   return users
@@ -114,16 +116,25 @@ def get_pri_contributors(repo_name, limit):
 
   users = []
   for index in range(minimum, pri_count + 1):
-    users.append(get_user("/repos/%s/pulls/%d" % (repo_name, index)))
-    users.append(get_user("/repos/%s/issues/%d" % (repo_name, index)))
+    user = get_user("/repos/%s/pulls/%d" % (repo_name, index))
+    if user is not None:
+      users.append(user)
+
+    user = get_user("/repos/%s/issues/%d" % (repo_name, index))
+    if user is not None:
+      users.append(user)
 
     for entry in get_paged_json("/repos/%s/pulls/%d/comments" %
                                 (repo_name, index)):
-      users.append(get_user_data(entry))
+        user = get_user_data(entry)
+        if user is not None:
+          users.append(user)
 
     for entry in get_paged_json("/repos/%s/issues/%d/comments" %
                                 (repo_name, index)):
-      users.append(get_user_data(entry))
+        user = get_user_data(entry)
+        if user is not None:
+          users.append(user)
 
   progress_complete()
 
@@ -163,6 +174,8 @@ def get_pri_count(repo_name):
 
 def get_user_data(entry):
   if "user" in entry.keys():
+    if entry['user'] is None:
+      return None
     return {"user_name": entry["user"]["login"],
             "avatar": "%s&s=128" % entry["user"]["avatar_url"],
             "name": get_user_name(entry["user"]["login"])}
@@ -230,6 +243,9 @@ def display_users(user_list, array=False):
     
 def get_user_name(login):
   user = get_data("/users/%s" % login)
+  if user is None:
+    # Possible ghost user. Return the only data we know; the login
+    return login
   if user["name"] is None:
     user["name"] = login
   return user["name"]
