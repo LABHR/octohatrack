@@ -140,8 +140,8 @@ def get_pri_contributors(repo_name, limit):
 
   return users
 
-def unique_users(a, b, c):
-  f = a + b + c
+def unique_users(a, b, c, d):
+  f = a + b + c + d
   array = [x for x in f if x is not None]
   return list({v['user_name']: v for v in array}.values())
 

@@ -6,6 +6,7 @@ import sys
 import pkg_resources
 from .helpers import (repo_exists, get_api_contributors, get_pri_contributors, unique_users, display_results)
 from .wiki import (get_wiki_contributors)
+from .contributors_file import (get_contributors_file)
 
 def main():
   version = pkg_resources.require("octohatrack")[0].version
@@ -47,11 +48,12 @@ def main():
     api_contributors = get_api_contributors(repo_name)
     pri_contributors = get_pri_contributors(repo_name, args.limit)
     wiki_contributors = get_wiki_contributors(repo_name)
+    file_contributors = get_contributors_file(repo_name)
   except ValueError as e:
     print(e)
     sys.exit(1)
 
-  all_contributors = unique_users(api_contributors, pri_contributors, wiki_contributors)
+  all_contributors = unique_users(api_contributors, pri_contributors, wiki_contributors, file_contributors)
 
   display_results(repo_name, api_contributors, all_contributors)
 
