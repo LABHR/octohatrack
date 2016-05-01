@@ -9,7 +9,7 @@ with open(path.join(here, 'DESCRIPTION.rst'), encoding='utf-8') as f:
 
 setup(
     name='octohatrack',
-    version='0.3.1',
+    version='0.4.1',
     description='Non-code contribution groker for GitHub',
     long_description=long_description,
     url='https://github.com/labhr/octohatrack',
@@ -20,7 +20,7 @@ setup(
         'License :: OSI Approved :: MIT License',
         'Programming Language :: Python :: 3',
     ],
-    keywords='octohatrack github contributions non-code',
+    keywords='octohatrack github contributions',
     install_requires=['requests', 'simplejson', 'gitpython'],
     entry_points={
       'console_scripts': [ "octohatrack = octohatrack:main" ]

@@ -1,6 +1,5 @@
 language: python
 python:
-  - "3.4"
   - "3.5"
 env:
   - GITHUB_TOKEN="1fefaa93eaf6816640dc14e14fcbbc0f00914516"
@@ -9,5 +8,4 @@ install:
 script: 
   - "octohatrack LABHR/octohatrack"
   - "python octohatrack.py LABHR/octohatrack-rb --no-cache"
-  - "DEBUG=true octohatrack LABHR/octohatrack-rb"
   - "python octohatrack.py programminghistorian/jekyll -w"
