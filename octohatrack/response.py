@@ -91,7 +91,7 @@ def parse_response(response):
         ratelimit_limit = int(response.headers.get('x-ratelimit-limit'))
         ratelimit_reset = int(response.headers.get('x-ratelimit-reset'))
 
-        message = "You have run out of GitHub request tokens. "
+        message = "\nYou have run out of GitHub request tokens. "
 
         if ratelimit_limit == 60:
             message += "Set a GITHUB_TOKEN to increase your limit to 5000/hour. "
