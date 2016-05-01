@@ -151,7 +151,7 @@ def get_data(uri):
   try:
     resp = conn.send("GET", uri)
     return resp.json()
-  except ResponseError as e:
+  except ResponseError:
     return None
 
 # Get the number of Pull Requests and Issues
