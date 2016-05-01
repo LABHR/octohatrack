@@ -6,25 +6,33 @@
 ![PyPI](https://img.shields.io/pypi/l/octohatrack.svg)
 ![PyPI](https://img.shields.io/pypi/implementation/octohatrack.svg)
 
-It's easy to see your direct [code contributions](https://help.github.com/articles/why-are-my-contributions-not-showing-up-on-my-profile/)
-on GitHub, but what about everything else?
+It's easy to see some [code contributions](https://help.github.com/articles/why-are-my-contributions-not-showing-up-on-my-profile/)
+on a GitHub repo, but what about everything else?
 
-**Octohatrack** takes a github repo name, and returns a list of every
-github user that has interacted with a project, but has not committed
-code.
+**Octohatrack** takes a github repo name, and returns two lists: 
+    - A list of all users as defined by GitHub as a contributor
+    - A list of all contributors to a project 
 
-Interactions include:
+**What is a 'GitHub contributor'?**
 
--   raising or commenting on an issue
--   raising or commenting on a pull request
--   commenting on a commit
+On any GitHub repo page, the header at the top of the file listings shows a number of commits, branches, releases and contributors. If you [click the 'contributors' link](https://github.com/LABHR/octohatrack/graphs/contributors), you get a list of users that contributed code to the master branch of the repo, ordered by the commits and lines of code contributed. This list is limited to the top 100 users
+
+**So, what are 'all contributors', then?**
+
+That's everyone who's worked on a GitHub project. It compiles a complete list of the GitHub-defined contributors (not just the top 100), plus everyone who's created an issue, opened a pull requests, commented on an issue, replied to a pull request, made any in-line comments on code, edited the repo wiki, or in any other way interacted with the repo. 
+
+**Limitations**
+
+As at April 2016, there is no API endpoint for reactions, so these aren't able to be counted. 
+
+**#LABHR**
 
 "Let's All Build a Hat Rack" ([\#LABHR](https://twitter.com/search?q=%23LABHR&src=typd)) is an
 original concept by [Leslie Hawthorn](http://hawthornlandings.org/2015/02/13/a-place-to-hang-your-hat/)
 
 Read more about octohatrack:
 
--   [A tool for tracking non-code GitHub contributions](https://opensource.com/life/15/10/octohatrack-github-non-code-contribution-tracker) on OpenSource.com
+-   [A tool for tracking GitHub contributions](https://opensource.com/life/15/10/octohatrack-github-non-code-contribution-tracker) on OpenSource.com
 -   [Acknowledging Non-Coding Contributions](https://modelviewculture.com/pieces/acknowledging-non-coding-contributions) on ModelViewCulture.com
 -   [Build a Better Hat Rack: All Contributions Welcome](https://www.youtube.com/watch?v=wQxFKxbWcFM) from KiwiPyCon (YouTube video)
 -   [Read about the project name change](http://glasnt.com/blog/2015/11/21/goodbye-octohat.html)
@@ -38,18 +46,16 @@ pip install octohatrack
 ## Usage
 
 ```
-$ octohatrack --help
-usage: octohatrack.py [-h] [-l LIMIT] [--no-cache] [-v] repo_name
+usage: octohatrack [-h] [--no-cache] [-v] [-l 10] username/repo
 
 positional arguments:
-  repo_name             githubuser/repo
+  username/repo      the name of the repo to parse
 
 optional arguments:
-  -h, --help            show this help message and exit
-  -l LIMIT, --limit LIMIT
-                        Limit to the last x Issues/Pull Requests
-  --no-cache            Disable local caching of API results
-  -v, --version         show program's version number and exit
+  -h, --help         show this help message and exit
+  --no-cache         Disable local caching of API results
+  -v, --version      show program's version number and exit
+  -l 10, --limit 10  Limit to the last x Issues/Pull Requests
 ```
 
 Define an environment variable for `GITHUB_TOKEN` to use an [authentication token](https://help.github.com/articles/creating-an-access-token-for-command-line-use/) to avoide being [Rate Limited](https://developer.github.com/v3/#rate-limiting)
@@ -76,10 +82,10 @@ docker run -e GITHUB_TOKEN octohatrack [arguments]
 ## Example output
 
 ```
-Collecting contributors...
-Collecting commentors............................................................................................................................................................................................
+Collecting API contributors...
+Collecting all repo contributors...
 
-Code contributors: 10
+GitHub Contributors:
 alicetragedy (Laura)
 davidjb (David Beitey)
 glasnt (Katie McLaughlin)
@@ -91,18 +97,34 @@ tacaswell (Thomas A Caswell)
 tclark (Tom Clark)
 timgws (Tim Groeneveld)
 
-Non-coding contributors: 11
+All Contributors:
+alicetragedy (Laura)
 brainwane (Sumana Harihareswara)
+davidjb (David Beitey)
 dshafik (Davey Shafik)
 edunham (E. Dunham)
 freakboy3742 (Russell Keith-Magee)
 gitter-badger (The Gitter Badger)
+glasnt (Katie McLaughlin)
 jniggemann (Jan)
 Ketsuban (Thomas Winwood)
 KirstieJane (Kirstie Whitaker)
+kristianperkins (Kristian Perkins)
 leesdolphin (Lee Symes)
+Lukasa (Cory Benfield)
+mfs (Mike Sampson)
+mjtamlyn (Marc Tamlyn)
 ncoghlan
+ossanna16 (Anna Ossowski)
 stewart-ibm (Stewart Smith)
+SvenDowideit (Sven Dowideit)
+tacaswell (Thomas A Caswell)
+tclark (Tom Clark)
+timgws (Tim Groeneveld)
+
+Repo: LABHR/octohatrack
+GitHub Contributors: 10
+All Contributors: 23
 ```
 
 
@@ -121,11 +143,16 @@ To reset the cache, remove the `cache_file.json` file.
 If you experience ongoing issues with the caching,
 please [log a detailed issue describing what you're seeing](https://github.com/LABHR/octohatrack/issues/new)
 
+### Wiki
+
+Because GitHub doesn't have an API endpoint for being able to parse gollum-based repo-wikis, I've had to default to cloning repos locally and parsing via gitpython. 
+
+If there are issues cloning the wiki, or other issues, it shouldn't break an octohatrack run, but if you do encounter issues, please [log an issue](https://github.com/LABHR/octohatrack/issues/new), and be sure to include platform information (this functionality has been tested on Mac OSX Yosemite and Ubuntu Xeniel)
+
 
 ## To do
 
--   include merge-only contributors as non-code contributors
--   verify correct statistics from repos with multi-person Pull Requests (#65)
+-   include merge-only contributors
 
 ## Code of Conduct
 

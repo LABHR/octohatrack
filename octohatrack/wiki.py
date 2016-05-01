@@ -25,9 +25,8 @@ from .helpers import (progress, progress_advance, get_user_data)
 tmp_folder = "tmprepo"
 
 
-def get_wiki_contributors(repo_name, code, non_code):
+def get_wiki_contributors(repo_name):
 
-    progress("Collecting wiki contributors")
 
     wiki_url = "https://github.com/%s.wiki" % repo_name
 
@@ -41,9 +40,10 @@ def get_wiki_contributors(repo_name, code, non_code):
     # as a replacement for an API check
     resp = requests.get("https://github.com/%s/wiki" % repo_name)
     if "Clone this wiki locally" not in resp.text:
-        print("No wiki")
         return []
     
+    progress("Collecting wiki contributors")
+
     progress_advance()
 
     # Attempt to clone the repo, catching all gitpython ValueError errors
@@ -65,29 +65,13 @@ def get_wiki_contributors(repo_name, code, non_code):
         wiki_contributors.append(i.author)
 
     # Return a unique set of contributors
-    wiki = list(set(wiki_contributors))
+    response = list(set(wiki_contributors))
 
-    if len(wiki) == 0:
-        print("\nWiki contributors: 0 (no wiki)")
-        return
+    users = []
 
-    github_users=[]
+    for entry in response:
+        user = get_user_data({"login": str(entry), "avatar_url": ""})
+        if user is not None:
+            users.append(user)
 
-    for x in code: 
-        github_users.append(x['name'])
-    for x in non_code:
-        github_users.append(x['name'])
-
-    new_wiki = []
-
-    # Ignore any users who's author names match an existing listing 
-    # as a code or non-coding contribution
-    #
-    # WARNING: Possibly a lossy process
-    for user in wiki: 
-        u = str(user)
-        if u in github_users:
-            continue
-        new_wiki.append(get_user_data({"login": u, "avatar_url": ""}))
-
-    return new_wiki
+    return users
