@@ -1,5 +1,6 @@
 FROM python:slim
 
+RUN apt-get update && apt-get install git -y
 
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app

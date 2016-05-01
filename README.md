@@ -39,8 +39,15 @@ Read more about octohatrack:
 
 ## Installation
 
+
 ```
 pip install octohatrack
+```
+
+`octohatrack` requires Python 3. Check your `pip --version` to ensure that it's pointing to a Python 3 installation. If you have both Python 2.7 and Python 3 on your system, you may need to install using: 
+
+```
+pip3 install octohatrack
 ```
 
 ## Usage

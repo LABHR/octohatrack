@@ -27,6 +27,10 @@ tmp_folder = "tmprepo"
 
 def get_wiki_contributors(repo_name):
 
+    # Confirm git is available before continuing
+    if not shutil.which("git"):
+        print("Cannot find local 'git' installation. Skipping wiki contributions")
+        return[]
 
     wiki_url = "https://github.com/%s.wiki" % repo_name
 
