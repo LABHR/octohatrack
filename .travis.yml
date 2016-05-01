@@ -2,7 +2,7 @@ language: python
 python:
   - "3.5"
 env:
-  - GITHUB_TOKEN="1fefaa93eaf6816640dc14e14fcbbc0f00914516"
+  - GITHUB_TOKEN="16604cd895a94970ea9bf5708854c64f71072dd4"
 install:
   - "pip install ."
 script: 
