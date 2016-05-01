@@ -9,7 +9,7 @@ with open(path.join(here, 'DESCRIPTION.rst'), encoding='utf-8') as f:
 
 setup(
     name='octohatrack',
-    version='0.5.0',
+    version='0.5.1',
     description='Non-code contribution groker for GitHub',
     long_description=long_description,
     url='https://github.com/labhr/octohatrack',
