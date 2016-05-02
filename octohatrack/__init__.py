@@ -9,6 +9,12 @@ from .wiki import (get_wiki_contributors)
 from .contributors_file import (get_contributors_file)
 
 def main():
+
+  # Exit unless we're in python 3
+  if not sys.version_info[0] == 3:
+    print("octohatrack requires a Python 3 environment.\n\n")
+    sys.exit(1)
+
   version = pkg_resources.require("octohatrack")[0].version
 
   parser = argparse.ArgumentParser()
