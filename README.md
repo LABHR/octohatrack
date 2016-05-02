@@ -74,7 +74,7 @@ to 60 requests per hour (allows for deeper searching).
 ```
 git clone https://github.com/labhr/octohatrack
 cd octohatrack
-python3 octohatrack.py [arguments]
+python3 -m octohatrack [arguments]
 ```
 
 ## Run octohatrack in a Docker container
