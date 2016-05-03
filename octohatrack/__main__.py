@@ -10,7 +10,6 @@ from .contributors_file import (get_contributors_file)
 
 def main():
  
-  print("NOOTNOOOT")
   # Exit unless we're in python 3
   if not sys.version_info[0] == 3:
     print("octohatrack requires a Python 3 environment.\n\n")
