@@ -1,6 +1,12 @@
 from setuptools import setup, find_packages
 from codecs import open
 from os import path
+import sys
+
+# Exit unless we're in pip3/Python 3
+if not sys.version_info[0] == 3:
+    print("\noctohatrack requires a Python 3 environment.\n\nTry `pip3 install` instead")
+    sys.exit(1)
 
 here = path.abspath(path.dirname(__file__))
 with open(path.join(here, 'DESCRIPTION.rst'), encoding='utf-8') as f:
