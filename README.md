@@ -39,7 +39,6 @@ Read more about octohatrack:
 
 ## Installation
 
-
 ```
 pip install octohatrack
 ```
@@ -49,6 +48,8 @@ pip install octohatrack
 ```
 pip3 install octohatrack
 ```
+
+See "Debugging: Python 3 requirement" for more information.
 
 ## Usage
 
@@ -91,6 +92,8 @@ docker run -e GITHUB_TOKEN octohatrack [arguments]
 ```
 Collecting API contributors...
 Collecting all repo contributors...
+Collecting wiki contributors.....
+Collecting CONTRIBUTORS file............................................
 
 GitHub Contributors:
 alicetragedy (Laura)
@@ -106,6 +109,7 @@ timgws (Tim Groeneveld)
 
 All Contributors:
 alicetragedy (Laura)
+baconandcoconut (twitter) (Deb Nicholson)
 brainwane (Sumana Harihareswara)
 davidjb (David Beitey)
 dshafik (Davey Shafik)
@@ -118,6 +122,7 @@ Ketsuban (Thomas Winwood)
 KirstieJane (Kirstie Whitaker)
 kristianperkins (Kristian Perkins)
 leesdolphin (Lee Symes)
+lhawthorn (twitter) (Leslie Hawthorn)
 Lukasa (Cory Benfield)
 mfs (Mike Sampson)
 mjtamlyn (Marc Tamlyn)
@@ -131,11 +136,28 @@ timgws (Tim Groeneveld)
 
 Repo: LABHR/octohatrack
 GitHub Contributors: 10
-All Contributors: 23
+All Contributors: 25
 ```
 
 
 ## Debugging
+
+### Python 3 requirement
+
+`octohatrack` requires Python 3.
+
+This is because there's a number of features that require Python 3, and `octohatrack` is *not* `--universal`. More specifically, there are some system utils that are Python 3 only, and Unicode support in Python 3 is **so** much easier in Python 3.
+
+If you are having issues installing and are getting a `octohatrack requires a Python 3 environment` error, check: 
+ - `python --version`
+ - `pip --version`
+
+If you are running in an environment with both Python 2 and Python 3, you may need to use `pip3` to install. 
+
+There are two checks in `setup.py` and `__main__.py` that will end the installation or execution, respectively, running if it doesn't detect a Python 3 environment. 
+
+
+If you *are* running in a Python 3 environment and it kicks you out, please [log an issue](https://github.com/LABHR/octohatrack/issues/new), including your `python --version`, and if you're running in a virtualenv. 
 
 ### Cache
 
