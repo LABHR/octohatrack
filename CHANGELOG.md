@@ -1,5 +1,13 @@
 # Change Log
 
+## [0.6.0] - 2016-05-04
+### Added
+ - Ensure Python 3 by adding blockers in `setup.py` and `__main__.py`
+
+### Changed
+ - project is now a module, which allows for easier local debugging
+ - removed duplicate wiki contributors from main repo contributors
+
 ## [0.5.1] - 2016-05-01
 ### Bugfix
  - confirm git is available within the environment before using (thanks @rogeriopradoj)

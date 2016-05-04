@@ -132,6 +132,7 @@ mfs (Mike Sampson)
 mjtamlyn (Marc Tamlyn)
 ncoghlan
 ossanna16 (Anna Ossowski)
+rogeriopradoj (Rogerio Prado de Jesus)
 stewart-ibm (Stewart Smith)
 SvenDowideit (Sven Dowideit)
 tacaswell (Thomas A Caswell)
@@ -140,7 +141,7 @@ timgws (Tim Groeneveld)
 
 Repo: LABHR/octohatrack
 GitHub Contributors: 10
-All Contributors: 25
+All Contributors: 26
 ```
 
 
