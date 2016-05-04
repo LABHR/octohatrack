@@ -140,10 +140,22 @@ def get_pri_contributors(repo_name, limit):
 
   return users
 
-def unique_users(a, b, c, d):
-  f = a + b + c + d
+def unique_users(a, b, w, d):
+  f = a + b + w + d
   array = [x for x in f if x is not None]
-  return list({v['user_name']: v for v in array}.values())
+  
+  p = list({v['user_name']: v for v in array}.values())
+
+  # Special case: wiki contributions
+  # Remove item if the display name for a wiki contributor matches another contribution
+  # (author display names and github user names don't match)
+  f = [x["name"] for x in (a + b + d) if x is not None]
+
+  for x in w:
+    if x["name"] in f:
+        p.remove(x)
+
+  return p
 
 
 @memoise
