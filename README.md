@@ -118,7 +118,6 @@ freakboy3742 (Russell Keith-Magee)
 gitter-badger (The Gitter Badger)
 glasnt (Katie McLaughlin)
 jniggemann (Jan)
-Katie McLaughlin
 Ketsuban (Thomas Winwood)
 KirstieJane (Kirstie Whitaker)
 kristianperkins (Kristian Perkins)
@@ -137,7 +136,7 @@ timgws (Tim Groeneveld)
 
 Repo: LABHR/octohatrack
 GitHub Contributors: 10
-All Contributors: 26
+All Contributors: 25
 ```
 
 
