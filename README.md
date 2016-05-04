@@ -21,6 +21,10 @@ On any GitHub repo page, the header at the top of the file listings shows a numb
 
 That's everyone who's worked on a GitHub project. It compiles a complete list of the GitHub-defined contributors (not just the top 100), plus everyone who's created an issue, opened a pull requests, commented on an issue, replied to a pull request, made any in-line comments on code, edited the repo wiki, or in any other way interacted with the repo. 
 
+**`CONTRIBUTORS` file formatting**
+
+See the bottom of [CONTRIBUTORS](https://github.com/LABHR/octohatrack/blob/master/CONTRIBUTORS) for details. 
+
 **Limitations**
 
 As at April 2016, there is no API endpoint for reactions, so these aren't able to be counted. 
