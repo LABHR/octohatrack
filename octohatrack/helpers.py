@@ -189,11 +189,9 @@ def get_user_data(entry):
     if entry['user'] is None:
       return None
     return {"user_name": entry["user"]["login"],
-            "avatar": "%s&s=128" % entry["user"]["avatar_url"],
             "name": get_user_name(entry["user"]["login"])}
   else:
     return {"user_name": entry["login"],
-            "avatar": "%s&s=128" % entry["avatar_url"],
             "name": get_user_name(entry["login"])}
 
 

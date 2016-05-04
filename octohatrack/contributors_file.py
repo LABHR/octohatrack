@@ -15,8 +15,7 @@ import base64
 import re
 import hashlib
 
-from .helpers import (progress, progress_advance, get_user_data, get_data)
-
+from .helpers import *
 
 def get_contributors_file(repo_name):
 
@@ -37,7 +36,6 @@ def get_contributors_file(repo_name):
 
     for line in content.splitlines():
         progress_advance()
-        name, avatar, user_name = [None,None,None]
         if not line.startswith("#"):
             if line.strip() is not "":
                 if "<" in line:
@@ -45,28 +43,15 @@ def get_contributors_file(repo_name):
                     if ":" in alias:
                         service, user_name = alias.split(":@")
                         if service == "twitter":
-                            avatar = get_twitter_avatar(user_name)
                             user_name += " (twitter)"
-                        if service == "github":
-                            avatar = get_gh_avatar(user_name)
                     elif "@" in alias:
                         user_name = alias
-                        avatar = get_gravatar(user_name) 
                     else:
                         log.debug("Invalid contributor line type: %s. Returning plain" % line)
-                        avatar = "unknown"
                     
-                    results.append({'name': name.strip(), 'avatar': avatar, 'user_name': user_name})
+                    results.append({'name': name.strip(), 'user_name': user_name})
+
+    progress_complete()
 
     return results
-
-def get_gh_avatar(user_name):
-    u = get_data("/users/%s" % user_name)
-    return u["avatar_url"]
-
-def get_gravatar(email):
-    return "http://TODO.com/%s" % email 
-    
-def get_twitter_avatar(user_name):
-    return "https://twitter.com/%s/profile_image?size=original" % user_name
 

@@ -20,7 +20,7 @@ import os
 import shutil
 import sys
 import requests
-from .helpers import (progress, progress_advance, get_user_data)
+from .helpers import *
 
 tmp_folder = "tmprepo"
 
@@ -74,8 +74,10 @@ def get_wiki_contributors(repo_name):
     users = []
 
     for entry in response:
-        user = get_user_data({"login": str(entry), "avatar_url": ""})
+        user = get_user_data({"login": str(entry)})
         if user is not None:
             users.append(user)
+
+    progress_complete()
 
     return users

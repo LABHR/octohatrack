@@ -4,7 +4,7 @@ import argparse
 from argparse import SUPPRESS
 import sys
 import pkg_resources
-from .helpers import (repo_exists, get_api_contributors, get_pri_contributors, unique_users, display_results)
+from .helpers import *
 from .wiki import (get_wiki_contributors)
 from .contributors_file import (get_contributors_file)
 
