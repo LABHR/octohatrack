@@ -27,7 +27,8 @@ See the bottom of [CONTRIBUTORS](https://github.com/LABHR/octohatrack/blob/maste
 
 **Limitations**
 
-As at April 2016, there is no API endpoint for [GitHub Reactions](https://github.com/blog/2119-add-reactions-to-pull-requests-issues-and-comments), so these aren't able to be counted. 
+As at April 2016, there is no API endpoint for [GitHub Reactions](https://github.com/blog/2119-add-reactions-to-pull-requests-issues-and-comments), so these aren't able to be counted. [Issue #87](https://github.com/LABHR/octohatrack/issues/87)
+ 
 
 **#LABHR**
 
