@@ -83,7 +83,7 @@ def get_page_int_json(uri):
    page = 1
    while True:
       progress_advance()
-      response = get_data("%s?page=%d" % (uri, page))
+      response = get_data("%s?page=%d&per_page=100" % (uri, page))
       if len(response) == 0:
          break
       else:

@@ -23,12 +23,15 @@ class Pager(object):
         self.uri = uri
         self.params = params
         self.max_pages = max_pages
+        self.per_page = 100
         self.count = 0
 
     def __iter__(self):
         while True:
             self.count += 1
-            response = self.conn.send('GET', self.uri, self.params)
+            params = self.params.copy()
+            params.setdefault('per_page', self.per_page)
+            response = self.conn.send('GET', self.uri, params)
             yield response
 
             if self.count == self.max_pages:
