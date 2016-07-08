@@ -152,7 +152,7 @@ All Contributors: 26
 
 `octohatrack` requires Python 3.
 
-This is because there's a number of features that require Python 3, and `octohatrack` is *not* `--universal`. More specifically, there are some system utils that are Python 3 only, and Unicode support in Python 3 is **so** much easier in Python 3.
+This is because there's a number of features that require Python 3, and `octohatrack` is *not* `--universal`. More specifically, there are some system utils that are Python 3 only, and Unicode support in Python 3 is **so** much easier than in Python 2.
 
 If you are having issues installing and are getting a `octohatrack requires a Python 3 environment` error, check: 
  - `python --version`
@@ -182,7 +182,7 @@ please [log a detailed issue describing what you're seeing](https://github.com/L
 
 Because GitHub doesn't have an API endpoint for being able to parse gollum-based repo-wikis, I've had to default to cloning repos locally and parsing via gitpython. 
 
-If there are issues cloning the wiki, or other issues, it shouldn't break an octohatrack run, but if you do encounter issues, please [log an issue](https://github.com/LABHR/octohatrack/issues/new), and be sure to include platform information (this functionality has been tested on Mac OSX Yosemite and Ubuntu Xeniel)
+If there are issues cloning the wiki, or other issues, it shouldn't break an octohatrack run, but if you do encounter issues, please [log an issue](https://github.com/LABHR/octohatrack/issues/new), and be sure to include platform information (this functionality has been tested on Mac OSX Yosemite and Ubuntu Xenial)
 
 
 ## To do
