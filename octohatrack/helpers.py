@@ -153,7 +153,10 @@ def unique_users(a, b, w, d):
 
   for x in w:
     if x["name"] in f:
+      try:
         p.remove(x)
+      except ValueError:
+        pass
 
   return p
 
