@@ -1,5 +1,13 @@
 # Change Log
 
+## [0.6.1] - 2016-07-26
+
+## Changed
+ - pagination now uses `per_page` 100 (thanks @boneskull)
+
+### BugFix
+ - consolidating duplicate wiki and github contributors corrected (thanks @boneskull)
+
 ## [0.6.0] - 2016-05-04
 ### Added
  - Ensure Python 3 by adding blockers in `setup.py` and `__main__.py`
