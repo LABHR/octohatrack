@@ -8,6 +8,6 @@ WORKDIR /usr/src/app
 COPY . /usr/src/app
 RUN pip install octohatrack
 
-ENTRYPOINT ["python", "octohatrack.py"]
+ENTRYPOINT ["octohatrack"]
 CMD ["-h"]
 
