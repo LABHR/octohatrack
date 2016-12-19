@@ -11,8 +11,9 @@ It's easy to see some [code contributions](https://help.github.com/articles/why-
 on a GitHub repo, but what about everything else?
 
 **Octohatrack** takes a github repo name, and returns two lists: 
-    - A list of all users as defined by GitHub as a contributor
-    - A list of all contributors to a project 
+
+  - A list of all users as defined by GitHub as a contributor
+  - A list of all contributors to a project 
 
 **What is a 'GitHub contributor'?**
 
