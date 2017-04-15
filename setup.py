@@ -14,7 +14,7 @@ with open(path.join(here, 'DESCRIPTION.rst'), encoding='utf-8') as f:
 
 setup(
     name='octohatrack',
-    version='0.6.1',
+    version='1.0.0-alpha',
     description='Show _all_ the contributors to a GitHub repository',
     long_description=long_description,
     url='https://github.com/labhr/octohatrack',
@@ -28,7 +28,6 @@ setup(
     keywords='octohatrack github contributions',
     install_requires=[
         'requests', 
-        'simplejson', 
         'gitpython'
     ],
     entry_points={

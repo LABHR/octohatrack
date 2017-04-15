@@ -21,29 +21,9 @@ def main():
   parser.add_argument("repo_name", metavar="username/repo", help="the name of the repo to parse")
   parser.add_argument("--no-cache", action='store_false', help='Disable local caching of API results')
   parser.add_argument("-v", "--version", action='version', version="octohatrack version %s" % version)
-  parser.add_argument("-l", "--limit", metavar=10, help="Limit to the last x Issues/Pull Requests", type=int, default=0)
-
-  # Deprecated flags
-  parser.add_argument("-c", "--show-contributors", action="store_true", help=SUPPRESS)
-  parser.add_argument("-n", "--show-names", action="store_true", help=SUPPRESS)
-  parser.add_argument("-g", "--generate-html", action="store_true", help=SUPPRESS)
-  parser.add_argument("-w", "--wiki", action="store_true", help=SUPPRESS)
 
   args = parser.parse_args()
 
-  # Deprecation warnings
-  if args.show_contributors:
-    print("The --show-contributors (-c) flag is deprecated. Ignoring.")
-
-  if args.show_names:
-    print("The --show-contributors (-n) flag is deprecated. Ignoring.")
-  
-  if args.generate_html:
-    print("The --generate-html (-g) flag is deprecated. Ignoring.")
-
-  if args.wiki:
-    print("The --wiki (-w) flag is deprecated. Ignoring.")
-  
   repo_name = args.repo_name
 
   try:

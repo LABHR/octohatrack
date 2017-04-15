@@ -14,28 +14,28 @@
 import base64
 import re
 import hashlib
+from .api_helpers import *
 
-from .helpers import *
 
 def get_contributors_file(repo_name):
 
-    progress("Collecting CONTRIBUTORS file")
+    response = get_json("repos/%s/contents/CONTRIBUTORS" % repo_name)
 
-    response = get_data("/repos/%s/contents/CONTRIBUTORS" % repo_name)
 
     if response is None:
         print("No CONTRIBUTORS file")
         return []
 
     if "message" in response.keys():
+        print(response)
         print("No CONTRIBUTORS file")
+        return []
 
     results = []
 
     content = base64.b64decode(response["content"]).decode("utf-8", "ignore")
 
     for line in content.splitlines():
-        progress_advance()
         if not line.startswith("#"):
             if line.strip() is not "":
                 if "<" in line:
@@ -50,8 +50,6 @@ def get_contributors_file(repo_name):
                         log.debug("Invalid contributor line type: %s. Returning plain" % line)
                     
                     results.append({'name': name.strip(), 'user_name': user_name})
-
-    progress_complete()
 
     return results
 
