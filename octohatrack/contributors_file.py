@@ -26,7 +26,6 @@ def contributors_file(repo_name):
         return []
 
     if "message" in response.keys():
-        print(response)
         print("No CONTRIBUTORS file")
         return []
 
