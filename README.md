@@ -103,6 +103,7 @@ Getting API Contributors..................
 Getting Issue and Pull Request Contributors................................................................................................................................................................................................................................................................................
 Getting File Contributors.......
 Getting Wiki Contributors......
+
 All Contributors:
 Anna Ossowski (ossanna16)
 Christopher Hiller (boneskull)
@@ -113,6 +114,7 @@ Deb Nicholson (baconandcoconut on twitter)
 E. Dunham (edunham)
 Jan Niggemann (jniggemann)
 Katie McLaughlin (glasnt)
+Kenneth Reitz (kennethreitz)
 Kirstie Whitaker (KirstieJane)
 Kristian Perkins (kristianperkins)
 Laura (alicetragedy)
@@ -136,7 +138,7 @@ Tom Clark (tclark)
 
 Repo: LABHR/octohatrack
 GitHub Contributors: 10
-All Contributors: 29 👏
+All Contributors: 30 👏
 ```
 
 

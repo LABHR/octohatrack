@@ -7,7 +7,7 @@ def display_results(repo_name, contributors, api_len):
     """
     Fancy display. 
     """
-    print("")
+    print("\n")
 
     print("All Contributors:")
 
