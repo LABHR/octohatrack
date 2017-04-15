@@ -5,7 +5,7 @@
 ![PyPI](https://img.shields.io/pypi/pyversions/octohatrack.svg)
 ![PyPI](https://img.shields.io/pypi/l/octohatrack.svg)
 ![PyPI](https://img.shields.io/pypi/implementation/octohatrack.svg)
-[![SayThanks.io](https://img.shields.io/badge/saythanks.io-%E2%98%BC-1EAEDB.svg)](https://saythanks.io/to/glasnt)
+[![Say Thanks](https://img.shields.io/badge/Say%20Thanks-!-1EAEDB.svg)](https://saythanks.io/to/glasnt)
 
 It's easy to see some [code contributions](https://help.github.com/articles/why-are-my-contributions-not-showing-up-on-my-profile/)
 on a GitHub repo, but what about everything else?
