@@ -1,4 +1,4 @@
-# octohatrack
+# 🐙👒 - octohatrack
 
 [![Travis](https://img.shields.io/travis/LABHR/octohatrack.svg)](https://travis-ci.org/LABHR/octohatrack)
 ![PyPI](https://img.shields.io/pypi/v/octohatrack.svg)
