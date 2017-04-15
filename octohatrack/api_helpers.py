@@ -4,6 +4,7 @@ import requests
 import os
 from .memoise import *
 from .helpers import *
+import time
 
 API = "https://api.github.com/"
 USER_LOGIN = "user--login"
@@ -18,6 +19,21 @@ def get_json(uri):
     Handle headers and json for us :3
     """
     response = requests.get(API + uri, headers=HEADERS)
+
+    limit = int(response.headers.get('x-ratelimit-remaining'))
+    if limit == 0:
+        sys.stdout.write("\n")
+        message = "You have run out of GitHub request tokens. "
+
+        if int(response.headers.get('x-ratelimit-limit')) == 60:
+            message += "Set a GITHUB_TOKEN to increase your limit to 5000/hour. "
+
+        wait_minutes = (int(response.headers.get(
+            'x-ratelimit-reset')) - int(time.time())) / 60
+        message += "Try again in ~%d minutes. " % wait_minutes
+
+        raise ValueError(message)
+
     progress()
     return response.json()
 
