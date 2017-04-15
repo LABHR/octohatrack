@@ -10,7 +10,7 @@ if not sys.version_info[0] == 3:
 
 here = path.abspath(path.dirname(__file__))
 with open(path.join(here, 'DESCRIPTION.rst'), encoding='utf-8') as f:
-  long_description = f.read()
+    long_description = f.read()
 
 setup(
     name='octohatrack',
@@ -27,13 +27,13 @@ setup(
     ],
     keywords='octohatrack github contributions',
     install_requires=[
-        'requests', 
+        'requests',
         'gitpython'
     ],
     entry_points={
-      'console_scripts': [ 
-        "octohatrack = octohatrack.__main__:main"
-      ]
+        'console_scripts': [
+            "octohatrack = octohatrack.__main__:main"
+        ]
     },
     packages=find_packages()
 )

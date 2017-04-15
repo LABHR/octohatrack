@@ -9,8 +9,9 @@ from octohatrack.contributors_file import *
 from octohatrack.wiki import *
 from octohatrack.helpers import *
 
+
 def main():
- 
+
     # Exit unless we're in python 3
     if not sys.version_info[0] == 3:
         print("octohatrack requires a Python 3 environment.\n\n")
@@ -19,9 +20,12 @@ def main():
     version = pkg_resources.require("octohatrack")[0].version
 
     parser = argparse.ArgumentParser()
-    parser.add_argument("repo_name", metavar="username/repo", help="the name of the repo to parse")
-    parser.add_argument("--no-cache", action='store_false', help='Disable local caching of API results')
-    parser.add_argument("-v", "--version", action='version', version="octohatrack version %s" % version)
+    parser.add_argument("repo_name", metavar="username/repo",
+                        help="the name of the repo to parse")
+    parser.add_argument("--no-cache", action='store_false',
+                        help='Disable local caching of API results')
+    parser.add_argument("-v", "--version", action='version',
+                        version="octohatrack version %s" % version)
 
     args = parser.parse_args()
     repo_name = args.repo_name
@@ -41,8 +45,6 @@ def main():
     progress_message("Getting Wiki Contributors")
     wik = wiki_contributors(repo_name)
 
-
     contributors = api + pri + fil + wik
 
     display_results(repo_name, contributors, len(api))
-

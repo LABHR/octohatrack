@@ -36,13 +36,9 @@ pprint(c)
 seen = []
 
 for i in c:
-  name = i["name"]
-  user = i["user_name"]
+    name = i["name"]
+    user = i["user_name"]
 
-  if name not in seen:
-    seen.append(name) 
-    print("%s (%s)" % (user, name))
-
-
-  
-
+    if name not in seen:
+        seen.append(name)
+        print("%s (%s)" % (user, name))

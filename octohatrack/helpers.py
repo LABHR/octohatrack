@@ -2,10 +2,11 @@
 
 import sys
 
-"""
-Fancy display. 
-"""
+
 def display_results(repo_name, contributors, api_len):
+    """
+    Fancy display. 
+    """
     print("")
 
     print("All Contributors:")
@@ -26,12 +27,14 @@ def display_results(repo_name, contributors, api_len):
     print("GitHub Contributors: %s" % api_len)
     print("All Contributors: %s 👏" % len(seen))
 
-"""
-Append an dot
-"""
+
 def progress():
+    """
+    Append an dot
+    """
     sys.stdout.write(".")
     sys.stdout.flush()
+
 
 def progress_message(message):
     sys.stdout.write("\n")

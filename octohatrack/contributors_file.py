@@ -4,11 +4,11 @@
 #
 #   This module is extremely experimental.
 #
-#   May contain traces of: 
+#   May contain traces of:
 #    * using the GitHub API to pull content of a repo
 #    * string parsing
 #    * gluten
-#    
+#
 #############################################################
 
 import base64
@@ -46,9 +46,10 @@ def contributors_file(repo_name):
                     elif "@" in alias:
                         user_name = alias
                     else:
-                        log.debug("Invalid contributor line type: %s. Returning plain" % line)
-                    
-                    results.append({'name': name.strip(), 'user_name': user_name})
+                        log.debug(
+                            "Invalid contributor line type: %s. Returning plain" % line)
+
+                    results.append(
+                        {'name': name.strip(), 'user_name': user_name})
 
     return results
-
