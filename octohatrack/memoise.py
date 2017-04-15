@@ -20,7 +20,7 @@ if "--no-cache" not in sys.argv:
   # Always run on exit
   def save_cache():
     with open(cache_file, 'w') as f:
-      json.dump(cache, f)
+      json.dump(cache, f, indent=4)
 
   atexit.register(save_cache)
 

@@ -17,24 +17,18 @@ def pri_contributors(repo_name):
 
   for _type in ["pulls", "issues"]:
     _count= api_get("repos/%s/%s?state=all&page=1&per_page=1" % (repo_name, _type), "number")
-    print(_count)
 
     for i in range(1, _count + 1):
       uri_stub = "/".join(["repos", repo_name, _type, str(i)])
-      print(uri_stub)
 
       start = api_get(uri_stub, key=USER_LOGIN)
       if start:
-        print(" - started by %s" % start)
         contribs.append(start)
       else:
-        print(uri_stub + " invalid. NEXT")
-
         break
 
       users = api_walk(uri_stub + "/comments", key=USER_LOGIN)
       if users:
-        print(" - commented on by: " + ",".join(users))
         contribs += users
 
   contribs = list(set(contribs))

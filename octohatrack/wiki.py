@@ -23,7 +23,7 @@ import requests
 
 tmp_folder = "tmprepo"
 
-def get_wiki_contributors(repo_name):
+def wiki_contributors(repo_name):
 
     # Confirm git is available before continuing
     if not shutil.which("git"):

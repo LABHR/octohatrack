@@ -17,10 +17,9 @@ import hashlib
 from .api_helpers import *
 
 
-def get_contributors_file(repo_name):
+def contributors_file(repo_name):
 
     response = get_json("repos/%s/contents/CONTRIBUTORS" % repo_name)
-
 
     if response is None:
         print("No CONTRIBUTORS file")
@@ -43,7 +42,7 @@ def get_contributors_file(repo_name):
                     if ":" in alias:
                         service, user_name = alias.split(":@")
                         if service == "twitter":
-                            user_name += " (twitter)"
+                            user_name += " on twitter"
                     elif "@" in alias:
                         user_name = alias
                     else:
