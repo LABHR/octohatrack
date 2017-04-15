@@ -4,14 +4,14 @@
 #
 #   This module is extremely experimental.
 #
-#   May contain traces of: 
+#   May contain traces of:
 #    * checking for specific strings on web pages to check
 #      for the existance of a wiki on a GitHub repo
-#    * locally cloning a wiki repo to check the commit 
+#    * locally cloning a wiki repo to check the commit
 #      history
 #    * local file system manipulation
 #    * peanuts, or other tree nuts
-#    
+#
 #############################################################
 
 
@@ -20,12 +20,11 @@ import os
 import shutil
 import sys
 import requests
-from .helpers import *
 
 tmp_folder = "tmprepo"
 
 
-def get_wiki_contributors(repo_name):
+def wiki_contributors(repo_name):
 
     # Confirm git is available before continuing
     if not shutil.which("git"):
@@ -34,9 +33,8 @@ def get_wiki_contributors(repo_name):
 
     wiki_url = "https://github.com/%s.wiki" % repo_name
 
-
     # There is no way to check if a repo has a wiki via the api
-    # 
+    #
     # The `has_wiki` is just a flag that reflects the settings checkbox
     # if a wiki is *enabled*, but it can be empty, and thus not cloneable
     #
@@ -45,13 +43,9 @@ def get_wiki_contributors(repo_name):
     resp = requests.get("https://github.com/%s/wiki" % repo_name)
     if "Clone this wiki locally" not in resp.text:
         return []
-    
-    progress("Collecting wiki contributors")
-
-    progress_advance()
 
     # Attempt to clone the repo, catching all gitpython ValueError errors
-    try: 
+    try:
         if os.path.isdir(tmp_folder):
             shutil.rmtree(tmp_folder)
 
@@ -60,24 +54,13 @@ def get_wiki_contributors(repo_name):
         print("\nError attempting clone wiki: %s" % str(e))
         return []
 
-    progress_advance()
-
     wiki_contributors = []
-    
+
     # Go through all the master branch commits and get all the git authors
     for i in list(repo.iter_commits("master")):
-        wiki_contributors.append(i.author)
+        wiki_contributors.append(str(i.author))
 
     # Return a unique set of contributors
-    response = list(set(wiki_contributors))
+    contribs = list(set(wiki_contributors))
 
-    users = []
-
-    for entry in response:
-        user = get_user_data({"login": str(entry)})
-        if user is not None:
-            users.append(user)
-
-    progress_complete()
-
-    return users
+    return [{"user_name": None, "name": c} for c in contribs]

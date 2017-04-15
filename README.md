@@ -61,7 +61,7 @@ See "Debugging: Python 3 requirement" for more information.
 ## Usage
 
 ```
-usage: octohatrack [-h] [--no-cache] [-v] [-l 10] username/repo
+usage: octohatrack [-h] [--no-cache] [-v] username/repo
 
 positional arguments:
   username/repo      the name of the repo to parse
@@ -70,7 +70,6 @@ optional arguments:
   -h, --help         show this help message and exit
   --no-cache         Disable local caching of API results
   -v, --version      show program's version number and exit
-  -l 10, --limit 10  Limit to the last x Issues/Pull Requests
 ```
 
 Define an environment variable for `GITHUB_TOKEN` to use an [authentication token](https://help.github.com/articles/creating-an-access-token-for-command-line-use/) to avoide being [Rate Limited](https://developer.github.com/v3/#rate-limiting)
@@ -97,54 +96,49 @@ docker run -e GITHUB_TOKEN octohatrack [arguments]
 ## Example output
 
 ```
-Collecting API contributors...
-Collecting all repo contributors...
-Collecting wiki contributors.....
-Collecting CONTRIBUTORS file............................................
+$ octohatrack LABHR/octohatrack
 
-GitHub Contributors:
-alicetragedy (Laura)
-davidjb (David Beitey)
-glasnt (Katie McLaughlin)
-kristianperkins (Kristian Perkins)
-Lukasa (Cory Benfield)
-mfs (Mike Sampson)
-SvenDowideit (Sven Dowideit)
-tacaswell (Thomas A Caswell)
-tclark (Tom Clark)
-timgws (Tim Groeneveld)
+Checking repo exists.......
+Getting API Contributors..................
+Getting Issue and Pull Request Contributors................................................................................................................................................................................................................................................................................
+Getting File Contributors.......
+Getting Wiki Contributors......
 
 All Contributors:
-alicetragedy (Laura)
-baconandcoconut (twitter) (Deb Nicholson)
-brainwane (Sumana Harihareswara)
-davidjb (David Beitey)
-dshafik (Davey Shafik)
-edunham (E. Dunham)
-freakboy3742 (Russell Keith-Magee)
-gitter-badger (The Gitter Badger)
-glasnt (Katie McLaughlin)
-jniggemann (Jan)
-Ketsuban (Thomas Winwood)
-KirstieJane (Kirstie Whitaker)
-kristianperkins (Kristian Perkins)
-leesdolphin (Lee Symes)
-lhawthorn (twitter) (Leslie Hawthorn)
-Lukasa (Cory Benfield)
-mfs (Mike Sampson)
-mjtamlyn (Marc Tamlyn)
-ncoghlan
-ossanna16 (Anna Ossowski)
-rogeriopradoj (Rogerio Prado de Jesus)
-stewart-ibm (Stewart Smith)
-SvenDowideit (Sven Dowideit)
-tacaswell (Thomas A Caswell)
-tclark (Tom Clark)
-timgws (Tim Groeneveld)
+Anna Ossowski (ossanna16)
+Christopher Hiller (boneskull)
+Cory Benfield (Lukasa)
+Davey Shafik (dshafik)
+David Beitey (davidjb)
+Deb Nicholson (baconandcoconut on twitter)
+E. Dunham (edunham)
+Jan Niggemann (jniggemann)
+Katie McLaughlin (glasnt)
+Kenneth Reitz (kennethreitz)
+Kirstie Whitaker (KirstieJane)
+Kristian Perkins (kristianperkins)
+Laura (alicetragedy)
+Lee Symes (leesdolphin)
+Leslie Hawthorn (lhawthorn on twitter)
+Marc Tamlyn (mjtamlyn)
+Mike Sampson (mfs)
+Nick Coghlan (ncoghlan)
+Rogerio Prado de Jesus (rogeriopradoj)
+Russell Keith-Magee (freakboy3742)
+Stewart Smith (stewart-ibm)
+Sumana Harihareswara (brainwane)
+Sven Dowideit (SvenDowideit)
+Tennessee Leeuwenburg (tleeuwenburg)
+The Gitter Badger (gitter-badger)
+Thomas A Caswell (tacaswell)
+Thomas Winwood (Ketsuban)
+Tim Groeneveld (timgws)
+Tobias Kunze (rixx)
+Tom Clark (tclark)
 
 Repo: LABHR/octohatrack
 GitHub Contributors: 10
-All Contributors: 26
+All Contributors: 30 👏
 ```
 
 
@@ -199,7 +193,5 @@ Conduct](https://github.com/labhr/octohatrack/blob/master/code-of-conduct.md).
 ## License
 
 Octohatrack is distributed under the [MIT license](https://github.com/labhr/octohatrack/blob/master/LICENSE).
-
-Octohub is Copyright (c) 2013 Alon Swartz (turnkeylinux), used inline under the GPLv3 license.
 
 This project is not affiliated with GitHub.
