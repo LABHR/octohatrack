@@ -69,7 +69,7 @@ def reducejson(j):
             for c in key["node"]["comments"]["nodes"]:
                     authors.append(c["author"])
 
-    unique = list({v['login']:v for v in authors}.values())
+    unique = list({v['login']:v for v in authors if v is not None}.values())
     return unique
 
 
