@@ -2,9 +2,11 @@
 
 import requests
 import os
+import sys
 from .memoise import *
 from .helpers import *
 import time
+import math
 
 API = "https://api.github.com/"
 USER_LOGIN = "user--login"
@@ -28,11 +30,18 @@ def get_json(uri):
         if int(response.headers.get('x-ratelimit-limit')) == 60:
             message += "Set a GITHUB_TOKEN to increase your limit to 5000/hour. "
 
-        wait_minutes = (int(response.headers.get(
-            'x-ratelimit-reset')) - int(time.time())) / 60
+        wait_seconds = (int(response.headers.get(
+            'x-ratelimit-reset')) - int(time.time()))
+        wait_minutes = math.ceil(wait_seconds / 60)
         message += "Try again in ~%d minutes. " % wait_minutes
 
-        raise ValueError(message)
+        if '--wait-for-reset' in sys.argv:
+            progress_message(message.replace('Try ', 'Trying '))
+            time.sleep(wait_seconds + 1)
+            progress_message('Resuming')
+            return get_json(uri)
+        else:
+            raise ValueError(message)
 
     progress()
     return response.json()

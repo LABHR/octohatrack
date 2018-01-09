@@ -24,6 +24,9 @@ def main():
                         help="the name of the repo to parse")
     parser.add_argument("--no-cache", action='store_false',
                         help='Disable local caching of API results')
+    parser.add_argument("--wait-for-reset", action='store_true',
+                        help='Enable waiting for rate limit reset '
+                             'rather than erroring')
     parser.add_argument("-v", "--version", action='version',
                         version="octohatrack version %s" % version)
 

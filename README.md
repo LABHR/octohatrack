@@ -61,7 +61,7 @@ See "Debugging: Python 3 requirement" for more information.
 ## Usage
 
 ```
-usage: octohatrack [-h] [--no-cache] [-v] username/repo
+usage: octohatrack [-h] [--no-cache] [--wait-for-reset] [-v] username/repo
 
 positional arguments:
   username/repo      the name of the repo to parse
@@ -69,6 +69,7 @@ positional arguments:
 optional arguments:
   -h, --help         show this help message and exit
   --no-cache         Disable local caching of API results
+  --wait-for-reset  Enable waiting for rate limit reset rather than erroring
   -v, --version      show program's version number and exit
 ```
 
@@ -173,6 +174,10 @@ To reset the cache, remove the `cache_file.json` file.
 
 If you experience ongoing issues with the caching,
 please [log a detailed issue describing what you're seeing](https://github.com/LABHR/octohatrack/issues/new)
+
+### Rate limiting
+
+Even if you define a `GITHUB_TOKEN`, you may be rate limited for a popular repository. Using `--wait-for-reset` will have Octohatrack sleep until GitHub says your token is usable again.
 
 ### Wiki
 
