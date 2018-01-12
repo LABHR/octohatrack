@@ -1,8 +1,17 @@
 # Change Log
 
+
+## [1.0.0-alpha1] - 2018-01-13
+
+### Added
+ - `--wait-for-reset` option added (thanks @jnothman)
+
+## [1.0.0-alpha] - 2017-04-15
+ - Refactor all the things!
+
 ## [0.6.1] - 2016-07-26
 
-## Changed
+### Changed
  - pagination now uses `per_page` 100 (thanks @boneskull)
 
 ### BugFix
