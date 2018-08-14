@@ -3,6 +3,13 @@
 import sys
 
 
+def _sort_by_name(contributor):
+    if contributor.get('name'):
+        return contributor['name'].lower()
+
+    return contributor['user_name']
+
+
 def display_results(repo_name, contributors, api_len):
     """
     Fancy display. 
@@ -13,10 +20,14 @@ def display_results(repo_name, contributors, api_len):
 
     # Sort and consolidate on Name
     seen = []
-    for user in sorted(contributors, key=lambda k: k['name'].lower()):
-        if user["name"] not in seen:
-            seen.append(user["name"])
-            if user["name"] != user["user_name"]:
+    for user in sorted(contributors, key=_sort_by_name):
+        if user.get('name'):
+            key = user['name']
+        else:
+            key = user['user_name']
+        if key not in seen:
+            seen.append(key)
+            if key != user["user_name"]:
                 print("%s (%s)" % (user["name"], user['user_name']))
             else:
                 print(user["user_name"])
