@@ -21,8 +21,9 @@ def pri_contributors(repo_name):
     contribs = []
 
     for _type in ["pulls", "issues"]:
-        _count = api_get("repos/%s/%s?state=all&page=1&per_page=1" %
-                         (repo_name, _type), "number")
+        _count = api_get(
+            "repos/%s/%s?state=all&page=1&per_page=1" % (repo_name, _type), "number"
+        )
 
         for i in range(1, _count + 1):
             uri_stub = "/".join(["repos", repo_name, _type, str(i)])

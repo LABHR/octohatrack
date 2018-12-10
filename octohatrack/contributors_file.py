@@ -46,9 +46,9 @@ def contributors_file(repo_name):
                         user_name = alias
                     else:
                         log.debug(
-                            "Invalid contributor line type: %s. Returning plain" % line)
+                            "Invalid contributor line type: %s. Returning plain" % line
+                        )
 
-                    results.append(
-                        {'name': name.strip(), 'user_name': user_name})
+                    results.append({"name": name.strip(), "user_name": user_name})
 
     return results
