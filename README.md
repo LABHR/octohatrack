@@ -164,13 +164,16 @@ If you *are* running in a Python 3 environment and it kicks you out, please [log
 
 ### Cache
 
-As of octohatrack 0.3.0, there is now a cache that gets created. 
+In order to not make duplicate API calls, octohatrack uses caching via [`requests-cache`](https://github.com/reclosedev/requests-cache).  
+
+Previous versions used a local `cache_file.json`. 
+
 Any time an external API call is made, it gets saved to a local
 cache file so that any subsequent calls don't have to burn an API call.
 
 You can disable the cache by using the `--no-cache` flag. 
 
-To reset the cache, remove the `cache_file.json` file.
+To reset the cache, remove the `cache_file.json` or `cache.sqlite` file.
 
 If you experience ongoing issues with the caching,
 please [log a detailed issue describing what you're seeing](https://github.com/LABHR/octohatrack/issues/new)
