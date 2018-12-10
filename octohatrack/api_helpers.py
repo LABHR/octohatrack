@@ -15,11 +15,13 @@ GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN")
 
 HEADERS = {"Authorization": "token %s" % GITHUB_TOKEN}
 
-requests_cache.install_cache(
-    cache_name='cache', 
-    backend='sqlite',
-    expire_after=60 * 60 * 24 # a day
-    )
+if "--no-cache" not in sys.argv:
+    requests_cache.install_cache(
+        cache_name='cache', 
+        backend='sqlite',
+        expire_after=60 * 60 * 24 # a day
+        )
+
 
 def get_json(uri):
     """
