@@ -28,7 +28,8 @@ setup(
     keywords='octohatrack github contributions',
     install_requires=[
         'requests',
-        'gitpython'
+        'gitpython',
+        'requests-cache',
     ],
     entry_points={
         'console_scripts': [

@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 
 import requests
+import requests_cache
 import os
 import sys
-from .memoise import *
 from .helpers import *
 import time
 import math
@@ -15,6 +15,11 @@ GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN")
 
 HEADERS = {"Authorization": "token %s" % GITHUB_TOKEN}
 
+requests_cache.install_cache(
+    cache_name='cache', 
+    backend='sqlite',
+    expire_after=60 * 60 * 24 # a day
+    )
 
 def get_json(uri):
     """
@@ -47,7 +52,6 @@ def get_json(uri):
     return response.json()
 
 
-@memoise
 def api_walk(uri, per_page=100, key="login"):
     """
     For a GitHub URI, walk all the pages until there's no more content
@@ -80,7 +84,6 @@ def user_login(r):
     return None
 
 
-@memoise
 def api_get(uri, key=None):
     """
     Simple API endpoint get, return only the keys we care about
