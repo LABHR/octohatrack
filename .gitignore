@@ -7,6 +7,9 @@ tmprepo/
 # Ignore local cache file
 cache_file.json
 
+# Ignore local cache database
+cache.sqlite
+
 # Distribution / packaging
 bin/
 build/

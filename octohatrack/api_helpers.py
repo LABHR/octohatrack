@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 
 import requests
+import requests_cache
 import os
 import sys
-from .memoise import *
 from .helpers import *
 import time
 import math
@@ -15,6 +15,11 @@ GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN")
 
 HEADERS = {"Authorization": "token %s" % GITHUB_TOKEN}
 
+if "--no-cache" not in sys.argv:
+    requests_cache.install_cache(
+        cache_name="cache", backend="sqlite", expire_after=60 * 60 * 24  # a day
+    )
+
 
 def get_json(uri):
     """
@@ -22,23 +27,22 @@ def get_json(uri):
     """
     response = requests.get(API + uri, headers=HEADERS)
 
-    limit = int(response.headers.get('x-ratelimit-remaining'))
+    limit = int(response.headers.get("x-ratelimit-remaining"))
     if limit == 0:
         sys.stdout.write("\n")
         message = "You have run out of GitHub request tokens. "
 
-        if int(response.headers.get('x-ratelimit-limit')) == 60:
+        if int(response.headers.get("x-ratelimit-limit")) == 60:
             message += "Set a GITHUB_TOKEN to increase your limit to 5000/hour. "
 
-        wait_seconds = (int(response.headers.get(
-            'x-ratelimit-reset')) - int(time.time()))
+        wait_seconds = int(response.headers.get("x-ratelimit-reset")) - int(time.time())
         wait_minutes = math.ceil(wait_seconds / 60)
         message += "Try again in ~%d minutes. " % wait_minutes
 
-        if '--wait-for-reset' in sys.argv:
-            progress_message(message.replace('Try ', 'Trying '))
+        if "--wait-for-reset" in sys.argv:
+            progress_message(message.replace("Try ", "Trying "))
             time.sleep(wait_seconds + 1)
-            progress_message('Resuming')
+            progress_message("Resuming")
             return get_json(uri)
         else:
             raise ValueError(message)
@@ -47,7 +51,6 @@ def get_json(uri):
     return response.json()
 
 
-@memoise
 def api_walk(uri, per_page=100, key="login"):
     """
     For a GitHub URI, walk all the pages until there's no more content
@@ -80,7 +83,6 @@ def user_login(r):
     return None
 
 
-@memoise
 def api_get(uri, key=None):
     """
     Simple API endpoint get, return only the keys we care about

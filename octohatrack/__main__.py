@@ -20,15 +20,20 @@ def main():
     version = pkg_resources.require("octohatrack")[0].version
 
     parser = argparse.ArgumentParser()
-    parser.add_argument("repo_name", metavar="username/repo",
-                        help="the name of the repo to parse")
-    parser.add_argument("--no-cache", action='store_false',
-                        help='Disable local caching of API results')
-    parser.add_argument("--wait-for-reset", action='store_true',
-                        help='Enable waiting for rate limit reset '
-                             'rather than erroring')
-    parser.add_argument("-v", "--version", action='version',
-                        version="octohatrack version %s" % version)
+    parser.add_argument(
+        "repo_name", metavar="username/repo", help="the name of the repo to parse"
+    )
+    parser.add_argument(
+        "--no-cache", action="store_false", help="Disable local caching of API results"
+    )
+    parser.add_argument(
+        "--wait-for-reset",
+        action="store_true",
+        help="Enable waiting for rate limit reset " "rather than erroring",
+    )
+    parser.add_argument(
+        "-v", "--version", action="version", version="octohatrack version %s" % version
+    )
 
     args = parser.parse_args()
     repo_name = args.repo_name

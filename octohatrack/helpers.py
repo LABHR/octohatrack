@@ -4,10 +4,10 @@ import sys
 
 
 def _sort_by_name(contributor):
-    if contributor.get('name'):
-        return contributor['name'].lower()
+    if contributor.get("name"):
+        return contributor["name"].lower()
 
-    return contributor['user_name']
+    return contributor["user_name"]
 
 
 def display_results(repo_name, contributors, api_len):
@@ -21,14 +21,14 @@ def display_results(repo_name, contributors, api_len):
     # Sort and consolidate on Name
     seen = []
     for user in sorted(contributors, key=_sort_by_name):
-        if user.get('name'):
-            key = user['name']
+        if user.get("name"):
+            key = user["name"]
         else:
-            key = user['user_name']
+            key = user["user_name"]
         if key not in seen:
             seen.append(key)
             if key != user["user_name"]:
-                print("%s (%s)" % (user["name"], user['user_name']))
+                print("%s (%s)" % (user["name"], user["user_name"]))
             else:
                 print(user["user_name"])
 
