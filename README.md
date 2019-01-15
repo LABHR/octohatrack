@@ -10,14 +10,14 @@
 It's easy to see some [code contributions](https://help.github.com/articles/why-are-my-contributions-not-showing-up-on-my-profile/)
 on a GitHub repo, but what about everything else?
 
-**Octohatrack** takes a github repo name, and returns two lists: 
+**Octohatrack** takes a GitHub repo name, and returns two lists: 
 
   - A list of all users as defined by GitHub as a contributor
   - A list of all contributors to a project 
 
 **What is a 'GitHub contributor'?**
 
-On any GitHub repo page, the header at the top of the file listings shows a number of commits, branches, releases and contributors. If you [click the 'contributors' link](https://github.com/LABHR/octohatrack/graphs/contributors), you get a list of users that contributed code to the master branch of the repo, ordered by the commits and lines of code contributed. This list is limited to the top 100 users
+On any GitHub repo page, the header at the top of the file listings shows a number of commits, branches, releases and contributors. If you [click the 'contributors' link](https://github.com/LABHR/octohatrack/graphs/contributors), you get a list of users that contributed code to the master branch of the repo, ordered by the commits and lines of code contributed. This list is limited to the top 100 users.
 
 **So, what are 'all contributors', then?**
 
