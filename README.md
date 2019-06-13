@@ -15,21 +15,24 @@ on a GitHub repo, but what about everything else?
   - A list of all users as defined by GitHub as a contributor
   - A list of all contributors to a project 
 
-**What is a 'GitHub contributor'?**
+**What is a 'direct contributor'?**
 
 On any GitHub repo page, the header at the top of the file listings shows a number of commits, branches, releases and contributors. If you [click the 'contributors' link](https://github.com/LABHR/octohatrack/graphs/contributors), you get a list of users that contributed code to the master branch of the repo, ordered by the commits and lines of code contributed. This list is limited to the top 100 users.
+
+GitHub also acknowledges 'Community Contributors', those that have contributed code to the master branch of repos that are dependencies of the current repo. The total count of these contributors is visible by hovering over the 'contributors' link on the main repo. 
+
+*Update 2019-06-13 - GitHub now uses the term Direct and Communtiy contributor*
 
 **So, what are 'all contributors', then?**
 
 That's everyone who's worked on a GitHub project. It compiles a complete list of the GitHub-defined contributors (not just the top 100), plus everyone who's created an issue, opened a pull requests, commented on an issue, replied to a pull request, made any in-line comments on code, edited the repo wiki, or in any other way interacted with the repo. 
 
-**`CONTRIBUTORS` file formatting**
-
-See the bottom of [CONTRIBUTORS](https://github.com/LABHR/octohatrack/blob/master/CONTRIBUTORS) for details. 
+It also adds anyone manually added to the `CONTRIBUTORS` file on a repo (if it exists). See the bottom of [CONTRIBUTORS](https://github.com/LABHR/octohatrack/blob/master/CONTRIBUTORS) for details on the formatting of this file. 
 
 **Limitations**
 
-[GitHub Reactions](https://github.com/blog/2119-add-reactions-to-pull-requests-issues-and-comments) are not counted. [Issue #87](https://github.com/LABHR/octohatrack/issues/87)
+* [GitHub Reactions](https://github.com/blog/2119-add-reactions-to-pull-requests-issues-and-comments) are not counted. [Issue #87](https://github.com/LABHR/octohatrack/issues/87)
+* Does not iterate over dependencies (although `octohatrack` could be run over these independently.)
  
 
 **#LABHR**
