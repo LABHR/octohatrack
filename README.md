@@ -101,48 +101,70 @@ docker run -e GITHUB_TOKEN octohatrack [arguments]
 
 ```
 $ octohatrack LABHR/octohatrack
+Collecting API contributors.....
+Collecting all repo contributors............................................................................................................................................................................................................................................................................................................................................................................................................
+Collecting wiki contributors.....
+Collecting CONTRIBUTORS file................................................
 
-Checking repo exists.......
-Getting API Contributors..................
-Getting Issue and Pull Request Contributors................................................................................................................................................................................................................................................................................
-Getting File Contributors.......
-Getting Wiki Contributors......
+GitHub Contributors:
+alicetragedy (Laura)
+boneskull (Christopher Hiller)
+davidjb (David Beitey)
+GawainLynch (Gawain Lynch)
+glasnt (Katie McLaughlin)
+jayvdb (John Vandenberg)
+jnothman (Joel Nothman)
+kristianperkins (Kristian Perkins)
+Lukasa (Cory Benfield)
+mfs (Mike Sampson)
+ncoghlan (Nick Coghlan)
+SvenDowideit (Sven Dowideit)
+tacaswell (Thomas A Caswell)
+timgws (Tim Groeneveld)
 
 All Contributors:
-Anna Ossowski (ossanna16)
-Christopher Hiller (boneskull)
-Cory Benfield (Lukasa)
-Davey Shafik (dshafik)
-David Beitey (davidjb)
-Deb Nicholson (baconandcoconut on twitter)
-E. Dunham (edunham)
-Jan Niggemann (jniggemann)
-Katie McLaughlin (glasnt)
-Kenneth Reitz (kennethreitz)
-Kirstie Whitaker (KirstieJane)
-Kristian Perkins (kristianperkins)
-Laura (alicetragedy)
-Lee Symes (leesdolphin)
-Leslie Hawthorn (lhawthorn on twitter)
-Marc Tamlyn (mjtamlyn)
-Mike Sampson (mfs)
-Nick Coghlan (ncoghlan)
-Rogerio Prado de Jesus (rogeriopradoj)
-Russell Keith-Magee (freakboy3742)
-Stewart Smith (stewart-ibm)
-Sumana Harihareswara (brainwane)
-Sven Dowideit (SvenDowideit)
-Tennessee Leeuwenburg (tleeuwenburg)
-The Gitter Badger (gitter-badger)
-Thomas A Caswell (tacaswell)
-Thomas Winwood (Ketsuban)
-Tim Groeneveld (timgws)
-Tobias Kunze (rixx)
-Tom Clark (tclark)
+alicetragedy (Laura)
+baconandcoconut (twitter) (Deb Nicholson)
+boneskull (Christopher Hiller)
+brainwane (Sumana Harihareswara)
+Chandler-Song (Chandler Song)
+davidjb (David Beitey)
+dshafik (Davey Shafik)
+edunham (E. Dunham)
+freakboy3742 (Russell Keith-Magee)
+GawainLynch (Gawain Lynch)
+gitter-badger (The Gitter Badger)
+glasnt (Katie McLaughlin)
+jayvdb (John Vandenberg)
+jniggemann (Jan Niggemann)
+jnothman (Joel Nothman)
+kennethreitz (Kenneth Reitz)
+ketsuban (Thomas Winwood)
+KirstieJane (Kirstie Whitaker)
+kristianperkins (Kristian Perkins)
+lhawthorn (twitter) (Leslie Hawthorn)
+Lukasa (Cory Benfield)
+MaineC (Isabel Drost-Fromm)
+mfs (Mike Sampson)
+mjtamlyn (Marc Tamlyn)
+ncoghlan (Nick Coghlan)
+ossanna16 (Anna Ossowski)
+parkr (Parker Moore)
+patcon (Patrick Connolly)
+rixx (Tobias Kunze)
+rogeriopradoj (Rogerio Prado de Jesus)
+skilldeliver (Vladislav Mihov)
+software-opal (Opal Symes)
+stewart-ibm (Stewart Smith)
+SvenDowideit (Sven Dowideit)
+tacaswell (Thomas A Caswell)
+tclark (Tom Clark)
+timgws (Tim Groeneveld)
+tleeuwenburg (Tennessee Leeuwenburg)
 
 Repo: LABHR/octohatrack
-GitHub Contributors: 10
-All Contributors: 30 👏
+GitHub Contributors: 14
+All Contributors: 38
 ```
 
 
