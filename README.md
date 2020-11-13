@@ -21,7 +21,7 @@ On any GitHub repo page, the header at the top of the file listings shows a numb
 
 GitHub also acknowledges 'Community Contributors', those that have contributed code to the master branch of repos that are dependencies of the current repo. The total count of these contributors is visible by hovering over the 'contributors' link on the main repo. 
 
-*Update 2019-06-13 - GitHub now uses the term Direct and Communtiy contributor*
+*Update 2019-06-13 - GitHub now uses the term Direct and Community contributor*
 
 **So, what are 'all contributors', then?**
 
@@ -67,13 +67,13 @@ See "Debugging: Python 3 requirement" for more information.
 usage: octohatrack [-h] [--no-cache] [--wait-for-reset] [-v] username/repo
 
 positional arguments:
-  username/repo      the name of the repo to parse
+  username/repo     the name of the repo to parse
 
 optional arguments:
-  -h, --help         show this help message and exit
-  --no-cache         Disable local caching of API results
+  -h, --help        show this help message and exit
+  --no-cache        Disable local caching of API results
   --wait-for-reset  Enable waiting for rate limit reset rather than erroring
-  -v, --version      show program's version number and exit
+  -v, --version     show program's version number and exit
 ```
 
 Define an environment variable for `GITHUB_TOKEN` to use an [authentication token](https://help.github.com/articles/creating-an-access-token-for-command-line-use/) to avoide being [Rate Limited](https://developer.github.com/v3/#rate-limiting)
