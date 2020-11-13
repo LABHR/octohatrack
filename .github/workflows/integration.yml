@@ -1,4 +1,4 @@
-name: self-report
+name: integration
 
 on:
   push:
@@ -28,3 +28,5 @@ jobs:
     - name: report
       run: |
         octohatrack LABHR/octohatrack
+      env:
+        GITHUB_TOKEN: $GH_TOKEN
