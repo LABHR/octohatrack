@@ -18,10 +18,11 @@ Limitations in the github graphql api means that this will only return the:
     - last 100 commit comments
 """
 
-import requests
 import json
 import os
+
 import click
+import requests
 
 GITHUB_API = "https://api.github.com/graphql"
 GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN")

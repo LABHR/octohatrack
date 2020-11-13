@@ -1,7 +1,9 @@
-from setuptools import setup, find_packages
+import sys
 from codecs import open
 from os import path
-import sys
+
+from setuptools import find_packages, setup
+
 import versioneer
 
 # Exit unless we're in pip3/Python 3
