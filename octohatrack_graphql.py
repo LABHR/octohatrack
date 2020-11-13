@@ -49,6 +49,7 @@ query ($owner: String!, $name: String!, $history: Int!) {
 }
 """
 
+
 def reducejson(j):
     """ 
     Not sure if there's a better way to walk the ... interesting result
@@ -57,35 +58,39 @@ def reducejson(j):
     authors = []
 
     for key in j["data"]["repository"]["commitComments"]["edges"]:
-            authors.append(key["node"]["author"])
+        authors.append(key["node"]["author"])
 
     for key in j["data"]["repository"]["issues"]["nodes"]:
-            authors.append(key["author"])
-            for c in key["comments"]["nodes"]:
-                    authors.append(c["author"])
-            
-    for key in j["data"]["repository"]["pullRequests"]["edges"]:
-            authors.append(key["node"]["author"])
-            for c in key["node"]["comments"]["nodes"]:
-                    authors.append(c["author"])
+        authors.append(key["author"])
+        for c in key["comments"]["nodes"]:
+            authors.append(c["author"])
 
-    unique = list({v['login']:v for v in authors if v is not None}.values())
+    for key in j["data"]["repository"]["pullRequests"]["edges"]:
+        authors.append(key["node"]["author"])
+        for c in key["node"]["comments"]["nodes"]:
+            authors.append(c["author"])
+
+    unique = list({v["login"]: v for v in authors if v is not None}.values())
     return unique
 
 
 @click.command()
-@click.argument('repo')
+@click.argument("repo")
 def main(repo):
     owner, name = repo.split("/")
-    variables = { "owner": owner, "name": name, "history":100}
-    result = requests.post(GITHUB_API, json.dumps({"query": graphql_query, "variables": variables}), headers=HEADERS)
+    variables = {"owner": owner, "name": name, "history": 100}
+    result = requests.post(
+        GITHUB_API,
+        json.dumps({"query": graphql_query, "variables": variables}),
+        headers=HEADERS,
+    )
 
     authors = reducejson(result.json())
     for a in authors:
-            print(a)
+        print(a)
 
     print(len(authors))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
