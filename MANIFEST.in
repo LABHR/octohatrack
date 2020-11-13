@@ -1,2 +1,4 @@
 include DESCRIPTION.rst
 recursive-include octohatrack *
+include versioneer.py
+include octohatrack/_version.py
