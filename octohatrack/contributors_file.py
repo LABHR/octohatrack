@@ -35,7 +35,7 @@ def contributors_file(repo_name):
 
     for line in content.splitlines():
         if not line.startswith("#"):
-            if line.strip() is not "":
+            if line.strip() != "":
                 if "<" in line:
                     name, alias = line.strip(">").split("<")
                     if ":" in alias:
