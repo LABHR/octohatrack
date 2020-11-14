@@ -5,7 +5,6 @@
 ![PyPI](https://img.shields.io/pypi/pyversions/octohatrack.svg)
 ![PyPI](https://img.shields.io/pypi/l/octohatrack.svg)
 ![PyPI](https://img.shields.io/pypi/implementation/octohatrack.svg)
-[![Say Thanks](https://img.shields.io/badge/Say%20Thanks-!-1EAEDB.svg)](https://saythanks.io/to/glasnt)
 
 It's easy to see some [code contributions](https://help.github.com/articles/why-are-my-contributions-not-showing-up-on-my-profile/)
 on a GitHub repo, but what about everything else?
@@ -76,7 +75,7 @@ optional arguments:
   -v, --version     show program's version number and exit
 ```
 
-Define an environment variable for `GITHUB_TOKEN` to use an [authentication token](https://help.github.com/articles/creating-an-access-token-for-command-line-use/) to avoide being [Rate Limited](https://developer.github.com/v3/#rate-limiting)
+Define an environment variable for `GITHUB_TOKEN` to use an [authentication token](https://help.github.com/articles/creating-an-access-token-for-command-line-use/) to avoid being [Rate Limited](https://developer.github.com/v3/#rate-limiting)
 to 60 requests per hour (allows for deeper searching).
 
 
