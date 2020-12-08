@@ -56,3 +56,6 @@ def main():
     contributors = api + pri + fil + wik
 
     display_results(repo_name, contributors, len(api))
+
+if __name__ == "__main__":
+    main()
