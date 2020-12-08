@@ -30,7 +30,7 @@ def get_json(uri):
     """
     response = requests.get(API + uri, headers=HEADERS)
 
-    if response.status_code != requests.codes.ok:
+    if response.status_code == 401:
         error_exit(response)
 
     limit = int(response.headers.get("x-ratelimit-remaining"))
