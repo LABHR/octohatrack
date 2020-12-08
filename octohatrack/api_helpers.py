@@ -27,6 +27,9 @@ def get_json(uri):
     """
     response = requests.get(API + uri, headers=HEADERS)
 
+    if response.status_code != requests.codes.ok:
+        error_exit(response)
+
     limit = int(response.headers.get("x-ratelimit-remaining"))
     if limit == 0:
         sys.stdout.write("\n")

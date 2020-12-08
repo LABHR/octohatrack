@@ -40,9 +40,6 @@ def main():
 
     progress_message("Checking repo exists")
     repo = get_json("repos/%s" % repo_name)
-    if "message" in repo:
-        print("Repo does not exist: %s" % repo_name)
-        sys.exit(1)
 
     progress_message("Getting API Contributors")
     api = api_contributors(repo_name)
