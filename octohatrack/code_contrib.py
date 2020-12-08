@@ -2,22 +2,19 @@
 
 from .api_helpers import *
 
-"""
-Given a repo name, get the "contributors" from the contribution counter
-"""
-
 
 def api_contributors(repo_name):
+    """
+    Given a repo name, get the "contributors" from the contribution counter
+    """
     contribs = api_walk("repos/%s/contributors" % repo_name)
     return [user_data(c) for c in contribs]
 
 
-"""
-Given a repo name, get all the contributors to all the PR/Issues
-"""
-
-
 def pri_contributors(repo_name):
+    """
+    Given a repo name, get all the contributors to all the PR/Issues
+    """
     contribs = []
 
     for _type in ["pulls", "issues"]:
@@ -46,11 +43,9 @@ def pri_contributors(repo_name):
     return [user_data(c) for c in contribs]
 
 
-"""
-from a user_name string, return a user_name/name dict
-"""
-
-
 def user_data(username):
+    """
+    from a user_name string, return a user_name/name dict
+    """
     name = api_get("users/%s" % username, "name")
     return {"user_name": username, "name": name}

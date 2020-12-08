@@ -29,7 +29,7 @@ def main():
     parser.add_argument(
         "--wait-for-reset",
         action="store_true",
-        help="Enable waiting for rate limit reset " "rather than erroring",
+        help="Enable waiting for rate limit reset rather than erroring",
     )
     parser.add_argument(
         "-v", "--version", action="version", version="octohatrack version %s" % version
@@ -53,6 +53,7 @@ def main():
     contributors = api + pri + fil + wik
 
     display_results(repo_name, contributors, len(api))
+
 
 if __name__ == "__main__":
     main()

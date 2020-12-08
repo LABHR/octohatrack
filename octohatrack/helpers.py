@@ -54,15 +54,14 @@ def progress_message(message):
 
 
 def error_exit(response):
-    breakpoint()
     message = response.json()["message"]
     status = response.status_code
     suggestion = None
     if message == "Bad credentials" and status == 401:
         suggestion = "Ensure you have set a GITHUB_TOKEN."
 
-    output = "\n\nError code " + str(status) + ": " + message 
-    if suggestion: 
+    output = "\n\nError code " + str(status) + ": " + message
+    if suggestion:
         output += "\n" + suggestion
 
     print(output)

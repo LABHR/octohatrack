@@ -18,6 +18,9 @@ from .api_helpers import *
 
 
 def contributors_file(repo_name):
+    """
+    If a contributors' file exists in a repo, parse it
+    """
 
     response = get_json("repos/%s/contents/CONTRIBUTORS" % repo_name)
 
