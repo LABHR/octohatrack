@@ -7,10 +7,17 @@
 It's easy to see some [code contributions](https://help.github.com/articles/why-are-my-contributions-not-showing-up-on-my-profile/)
 on a GitHub repo, but what about everything else?
 
+```
+pip install octohatrack
+octohatrack LABHR/octohatrack # this repo
+```
+---
+
 **Octohatrack** takes a GitHub repo name, and returns two lists: 
 
   - A list of all users as defined by GitHub as a contributor
   - A list of all contributors to a project 
+
 
 **What is a 'direct contributor'?**
 
