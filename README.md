@@ -85,6 +85,9 @@ For advanced use cases, like development, you have more options than the publish
 ```
 git clone https://github.com/labhr/octohatrack
 cd octohatrack
+virtualenv venv
+source venv/bin/activate
+pip install -e .
 python3 -m octohatrack [arguments]
 ```
 
