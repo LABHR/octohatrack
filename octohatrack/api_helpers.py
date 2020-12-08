@@ -11,9 +11,12 @@ import math
 API = "https://api.github.com/"
 USER_LOGIN = "user--login"
 
-GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN")
+GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN", None)
 
-HEADERS = {"Authorization": "token %s" % GITHUB_TOKEN}
+if GITHUB_TOKEN:
+    HEADERS = {"Authorization": "token %s" % GITHUB_TOKEN}
+else:
+    HEADERS = {}
 
 if "--no-cache" not in sys.argv:
     requests_cache.install_cache(
@@ -26,6 +29,9 @@ def get_json(uri):
     Handle headers and json for us :3
     """
     response = requests.get(API + uri, headers=HEADERS)
+
+    if response.status_code == 401:
+        error_exit(response)
 
     limit = int(response.headers.get("x-ratelimit-remaining"))
     if limit == 0:
