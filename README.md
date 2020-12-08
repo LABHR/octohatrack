@@ -76,8 +76,11 @@ optional arguments:
 Define an environment variable for `GITHUB_TOKEN` to use an [authentication token](https://help.github.com/articles/creating-an-access-token-for-command-line-use/) to avoid being [Rate Limited](https://developer.github.com/v3/#rate-limiting)
 to 60 requests per hour (allows for deeper searching).
 
+## Development Usage
 
-## Run this repo locally
+For advanced use cases, like development, you have more options than the published version.
+
+### Run this repo locally
 
 ```
 git clone https://github.com/labhr/octohatrack
@@ -85,7 +88,7 @@ cd octohatrack
 python3 -m octohatrack [arguments]
 ```
 
-## Run octohatrack in a Docker container
+### Run octohatrack in a Docker container
 
 ```
 git clone https://github.com/labhr/octohatrack
@@ -151,7 +154,6 @@ GitHub Contributors: 14
 All Contributors: 39 👏
 ```
 
-
 ## Debugging
 
 ### Python 3 requirement
@@ -167,7 +169,6 @@ If you are having issues installing and are getting a `octohatrack requires a Py
 If you are running in an environment with both Python 2 and Python 3, you may need to use `pip3` to install. 
 
 There are two checks in `setup.py` and `__main__.py` that will end the installation or execution, respectively, running if it doesn't detect a Python 3 environment. 
-
 
 If you *are* running in a Python 3 environment and it kicks you out, please [log an issue](https://github.com/LABHR/octohatrack/issues/new), including your `python --version`, and if you're running in a virtualenv. 
 
@@ -196,7 +197,6 @@ Even if you define a `GITHUB_TOKEN`, you may be rate limited for a popular repos
 Because GitHub doesn't have an API endpoint for being able to parse gollum-based repo-wikis, I've had to default to cloning repos locally and parsing via gitpython. 
 
 If there are issues cloning the wiki, or other issues, it shouldn't break an octohatrack run, but if you do encounter issues, please [log an issue](https://github.com/LABHR/octohatrack/issues/new), and be sure to include platform information (this functionality has been tested on Mac OSX Yosemite and Ubuntu Xenial)
-
 
 ## To do
 
