@@ -9,7 +9,7 @@ on a GitHub repo, but what about everything else?
 
 ```
 pip install octohatrack
-octohatrack LABHR/octohatrack # this repo
+octohatrack LABHR/octohatrack
 ```
 ---
 
@@ -250,6 +250,8 @@ WHERE
 -  repo.name = "username/repo"
 + (repo.name = "username/repo" OR repo.name = "username/oldrepo")
 ```
+
+A sample implementation of this method is available in `octohatrack_bigquery.py`. 
 
 ### Wiki
 
