@@ -23,13 +23,27 @@ octohatrack LABHR/octohatrack # this repo
 
 On any GitHub repo page, the header at the top of the file listings shows a number of commits, branches, releases and contributors. If you [click the 'contributors' link](https://github.com/LABHR/octohatrack/graphs/contributors), you get a list of users that contributed code to the master branch of the repo, ordered by the commits and lines of code contributed. This list is limited to the top 100 users.
 
-GitHub also acknowledges 'Community Contributors', those that have contributed code to the master branch of repos that are dependencies of the current repo. The total count of these contributors is visible by hovering over the 'contributors' link on the main repo. 
+GitHub has acknowledged 'Community Contributors', those that have contributed code to the master branch of repos that are dependencies of the current repo. The total count of these contributors was visible by hovering over the 'contributors' link on the main repo. 
 
-*Update 2019-06-13 - GitHub now uses the term Direct and Community contributor*
+*Update 2019-06-13 - GitHub now uses the term Direct and Community contributor.*
+
+*Update 2020-06 - GitHub removed Community contributor visibility with a UX update.* 
 
 **So, what are 'all contributors', then?**
 
-That's everyone who's worked on a GitHub project. It compiles a complete list of the GitHub-defined contributors (not just the top 100), plus everyone who's created an issue, opened a pull requests, commented on an issue, replied to a pull request, made any in-line comments on code, edited the repo wiki, or in any other way interacted with the repo. 
+That's everyone who has worked on a GitHub project.
+
+ It compiles a complete list of:
+
+ * the GitHub-defined contributors (not just the top 100), plus 
+ * everyone who has 
+   * created an issue, 
+   * opened a pull requests, 
+   * commented on an issue, 
+   * replied to a pull request, 
+   * made any in-line comments on code, 
+   * edited the repo wiki
+ * or in any other way interacted with the repo. 
 
 It also adds anyone manually added to the `CONTRIBUTORS` file on a repo (if it exists). See the bottom of [CONTRIBUTORS](https://github.com/LABHR/octohatrack/blob/master/CONTRIBUTORS) for details on the formatting of this file. 
 
@@ -202,11 +216,46 @@ please [log a detailed issue describing what you're seeing](https://github.com/L
 
 Even if you define a `GITHUB_TOKEN`, you may be rate limited for a popular repository. Using `--wait-for-reset` will have Octohatrack sleep until GitHub says your token is usable again.
 
+### Faster Pull Request/Issue results with Big Query
+
+The slowest function of octohatrack is iterating through all the issues and pull requests of a repo and getting a list of all the issue/pull request openers and all commenters. This part of the data collection is probably the part that will be rate limited.
+
+This section can be faster, but more expensive, with BigQuery. 
+
+Following the [GH Archive](https://www.gharchive.org/#bigquery) instructions, you can get the list of the events from a repo in under 10 seconds. 
+
+⚠️ Check the [BigQuery pricing page](https://cloud.google.com/bigquery/pricing#on_demand_pricing) for more details, but the following query *should* stay under the free quota (~150GB of the 1TB limit).
+
+
+```sql
+SELECT
+  actor.login
+FROM
+  `githubarchive.month.*`
+WHERE
+  repo.name = "username/repo"
+  AND type NOT IN ("WatchEvent", "ForkEvent") -- octohatrack doesn't consider these participation
+GROUP BY 
+  actor.login
+ORDER BY
+  LOWER(actor.login) ASC
+```
+
+This data set doesn't understand renaming of users or repos. You may end up with old/dead aliases in your results. 
+
+If you have renamed your repo, make the following change:
+
+```diff
+WHERE
+-  repo.name = "username/repo"
++ (repo.name = "username/repo" OR repo.name = "username/oldrepo")
+```
+
 ### Wiki
 
-Because GitHub doesn't have an API endpoint for being able to parse gollum-based repo-wikis, I've had to default to cloning repos locally and parsing via gitpython. 
+Because GitHub doesn't have an API endpoint for being able to parse gollum-based repo-wikis, octohatrack defaults to cloning wiki repos locally, and parsing via gitpython. 
 
-If there are issues cloning the wiki, or other issues, it shouldn't break an octohatrack run, but if you do encounter issues, please [log an issue](https://github.com/LABHR/octohatrack/issues/new), and be sure to include platform information (this functionality has been tested on Mac OSX Yosemite and Ubuntu Xenial)
+If there are issues cloning the wiki, or other issues, it shouldn't break an octohatrack run, but if you do encounter issues, please [log an issue](https://github.com/LABHR/octohatrack/issues/new), and be sure to include platform information (this functionality has been tested on Mac OSX Yosemite and Ubuntu Xenial).
 
 ## To do
 
